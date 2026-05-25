@@ -363,6 +363,8 @@ appData.history = appData.history.map(function(h) {
     if (h.anulled == null) h.anulled = false;
     return h;
 });
+/* Migrar sessionId faltante (datos guardados con versión anterior) */
+if (!appData.sessionId) appData.sessionId = genSessionId();
 
 var lastTap  = 0;
 var DEBOUNCE = 350;
@@ -670,7 +672,8 @@ function confirmDownload() {
                 '<td>' + ev.id + '</td>' +
                 '<td><span style="background:#fed7aa;color:#9a3412;padding:4px 12px;border-radius:20px;font-weight:bold;">↩ ANULACIÓN #' + ev.originalId + '</span>' + postTag + '</td>' +
                 '<td>' + ev.time + '</td>' +
-                '<td colspan="2" style="color:#92400e;font-size:12px;">Anulación de: ' + (ev.originalMethod === 'cash' ? 'Efectivo' : 'Transferencia') + ' registrado a las ' + ev.originalTime + '</td>' +
+                '<td style="color:#92400e;font-size:12px;">Anulación de: ' + (ev.originalMethod === 'cash' ? 'Efectivo' : 'Transferencia') + ' registrado a las ' + ev.originalTime + '</td>' +
+                '<td></td>' +
                 '<td><span class="gate-badge">' + ev.gate + '</span></td>' +
                 '<td><span class="controller-badge">' + ev.controller + '</span></td></tr>';
         }
@@ -902,7 +905,7 @@ function generateConsolidatedReport() {
     var allDetails = []; var globalId = 1;
     for (var i=0; i<loadedData.length; i++) { var d=loadedData[i]; for (var j=0; j<d.detalles.length; j++) { var det=d.detalles[j]; allDetails.push({ id:globalId++, metodo:det.metodo, hora:det.hora, categoria:det.categoria, turno:det.turno, acceso:det.acceso, controlador:det.controlador, archivo:det.archivo||d.fileName, gate:d.gate }); } }
     var turnoMap={}, ctrlMap={}, accMap={};
-    for (var k=0; k<allDetails.length; k++) { var det2=allDetails[k]; var price=det2.metodo.indexOf('Efectivo')>=0?10000:10007; var t=det2.turno||'Sin turno'; var c=det2.controlador||'No especificado'; var a=det2.acceso||'Sin acceso'; if (!turnoMap[t]) turnoMap[t]={cantidad:0,recaudado:0}; if (!ctrlMap[c]) ctrlMap[c]={cantidad:0,recaudado:0}; if (!accMap[a]) accMap[a]={cantidad:0,recaudado:0}; turnoMap[t].cantidad++; turnoMap[t].recaudado+=price; ctrlMap[c].cantidad++; ctrlMap[c].recaudado+=price; accMap[a].cantidad++; accMap[a].recaudado+=price; }
+    for (var k=0; k<allDetails.length; k++) { var det2=allDetails[k]; var mLow=det2.metodo.toLowerCase(); if (mLow.indexOf('anulación')>=0||mLow.indexOf('anulacion')>=0||mLow.indexOf('anulado')>=0) continue; var price=det2.metodo.indexOf('Efectivo')>=0?10000:10007; var t=det2.turno||'Sin turno'; var c=det2.controlador||'No especificado'; var a=det2.acceso||'Sin acceso'; if (!turnoMap[t]) turnoMap[t]={cantidad:0,recaudado:0}; if (!ctrlMap[c]) ctrlMap[c]={cantidad:0,recaudado:0}; if (!accMap[a]) accMap[a]={cantidad:0,recaudado:0}; turnoMap[t].cantidad++; turnoMap[t].recaudado+=price; ctrlMap[c].cantidad++; ctrlMap[c].recaudado+=price; accMap[a].cantidad++; accMap[a].recaudado+=price; }
     var date = new Date().toLocaleDateString('es-AR',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
     var detRows='';
     for (var d=0; d<allDetails.length; d++) { var det3=allDetails[d]; var isCash=det3.metodo.indexOf('Efectivo')>=0; detRows+='<tr><td>'+det3.id+'</td><td><span class="badge '+(isCash?'cash':'transfer')+'">'+det3.metodo+'</span></td><td>'+det3.hora+'</td><td>'+det3.categoria+'</td><td>'+det3.turno+'</td><td>'+det3.acceso+'</td><td>'+(det3.controlador==='No especificado'?'<span class="badge unsp">No especificado</span>':det3.controlador)+'</td><td style="font-size:11px;color:#64748b;">'+det3.archivo+'</td></tr>'; }
