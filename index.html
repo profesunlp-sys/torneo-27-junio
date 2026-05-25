@@ -6,274 +6,112 @@
     <title>Torneo 27 Junio – Suite</title>
     <style>
         :root {
-            --bg: #f4f6fb;
-            --card: #ffffff;
-            --text: #1e293b;
-            --subtext: #64748b;
-            --primary: #3b82f6;
-            --border: #e2e8f0;
-            --stat-bg: #f8fafc;
-            --success: #10b981;
-            --danger: #ef4444;
-            --warning: #f59e0b;
-            --shadow: 0 8px 30px rgba(0,0,0,0.06);
-            --btn-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            --bg: #f4f6fb; --card: #ffffff; --text: #1e293b; --subtext: #64748b;
+            --primary: #3b82f6; --border: #e2e8f0; --stat-bg: #f8fafc;
+            --success: #10b981; --danger: #ef4444; --warning: #f59e0b;
+            --shadow: 0 8px 30px rgba(0,0,0,0.06); --btn-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
         .dark-mode {
-            --bg: #0f172a;
-            --card: #1e293b;
-            --text: #f1f5f9;
-            --subtext: #94a3b8;
-            --primary: #60a5fa;
-            --border: #334155;
-            --stat-bg: #1e293b;
-            --shadow: 0 8px 30px rgba(0,0,0,0.4);
-            --btn-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --subtext: #94a3b8;
+            --primary: #60a5fa; --border: #334155; --stat-bg: #1e293b;
+            --shadow: 0 8px 30px rgba(0,0,0,0.4); --btn-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
-            transition: background 0.3s, color 0.3s;
-        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Inter',system-ui,-apple-system,sans-serif; background:var(--bg); color:var(--text); min-height:100vh; transition:background .3s,color .3s; }
 
         /* NAV */
-        .global-nav {
-            position: sticky; top: 0; z-index: 50;
-            background: var(--card);
-            border-bottom: 2px solid var(--border);
-            padding: 10px 16px;
-            display: flex; align-items: center;
-            justify-content: space-between;
-            gap: 10px; flex-wrap: wrap;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-            transition: background 0.3s;
-        }
-        .tab-buttons { display: flex; gap: 8px; }
-        .tab-btn {
-            border: 2px solid var(--border);
-            background: var(--stat-bg);
-            color: var(--subtext);
-            border-radius: 12px;
-            padding: 8px 14px;
-            font-weight: 700; font-size: 13px;
-            cursor: pointer; transition: all 0.2s;
-        }
-        .tab-btn.active {
-            background: var(--primary);
-            border-color: var(--primary);
-            color: white;
-        }
-        .nav-right { display: flex; align-items: center; gap: 8px; }
-        .clock {
-            font-size: 1.1rem; font-weight: 700;
-            background: var(--stat-bg);
-            padding: 5px 14px; border-radius: 30px;
-            border: 1px solid var(--border);
-        }
-        .icon-btn {
-            background: var(--stat-bg);
-            border: 1px solid var(--border);
-            border-radius: 50%;
-            width: 38px; height: 38px;
-            font-size: 17px; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            color: var(--text); transition: transform 0.2s;
-        }
-        .icon-btn:active { transform: scale(0.92); }
+        .global-nav { position:sticky; top:0; z-index:50; background:var(--card); border-bottom:2px solid var(--border); padding:10px 16px; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; box-shadow:0 2px 10px rgba(0,0,0,.06); transition:background .3s; }
+        .tab-buttons { display:flex; gap:8px; }
+        .tab-btn { border:2px solid var(--border); background:var(--stat-bg); color:var(--subtext); border-radius:12px; padding:8px 14px; font-weight:700; font-size:13px; cursor:pointer; transition:all .2s; }
+        .tab-btn.active { background:var(--primary); border-color:var(--primary); color:white; }
+        .nav-right { display:flex; align-items:center; gap:8px; }
+        .clock { font-size:1.1rem; font-weight:700; background:var(--stat-bg); padding:5px 14px; border-radius:30px; border:1px solid var(--border); }
+        .icon-btn { background:var(--stat-bg); border:1px solid var(--border); border-radius:50%; width:38px; height:38px; font-size:17px; cursor:pointer; display:flex; align-items:center; justify-content:center; color:var(--text); transition:transform .2s; }
+        .icon-btn:active { transform:scale(.92); }
 
         /* TABS */
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
+        .tab-content { display:none; }
+        .tab-content.active { display:block; }
 
-        /* CONTROL DE ENTRADAS */
-        .control-wrapper {
-            display: flex; justify-content: center;
-            padding: 20px 15px 30px;
-        }
-        .app-container {
-            width: 100%; max-width: 540px;
-            background: var(--card);
-            border-radius: 28px; padding: 24px 20px;
-            box-shadow: var(--shadow); transition: background 0.3s;
-        }
-        .config-box {
-            background: var(--stat-bg);
-            border: 2px solid var(--primary);
-            border-radius: 18px; padding: 14px; margin-bottom: 12px;
-            display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
-        }
-        .config-box label, .controller-box label {
-            display: flex; flex-direction: column;
-            font-size: 10px; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 0.4px;
-            color: var(--primary); gap: 4px;
-        }
-        .config-box select {
-            padding: 8px 6px; border-radius: 10px;
-            border: 1px solid var(--border);
-            background: var(--card); color: var(--text);
-            font-weight: 600; font-size: 12px;
-        }
-        .controller-box { margin-bottom: 20px; }
-        .controller-box select {
-            padding: 10px 8px; border-radius: 10px;
-            border: 1px solid var(--border);
-            background: var(--card); color: var(--text);
-            font-weight: 600; font-size: 14px; width: 100%;
-        }
-        .last-entry {
-            text-align: center; font-size: 13px;
-            color: var(--subtext); margin: 8px 0 16px;
-            font-weight: 500; min-height: 20px;
-        }
-        .buttons-grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 16px; margin-bottom: 24px;
-        }
-        .entry-btn {
-            border: none; border-radius: 20px;
-            padding: 28px 10px; color: white;
-            font-weight: 700; font-size: 17px; cursor: pointer;
-            box-shadow: var(--btn-shadow); transition: all 0.15s ease;
-            display: flex; flex-direction: column;
-            align-items: center; gap: 6px;
-            user-select: none; -webkit-tap-highlight-color: transparent;
-        }
-        .entry-btn:active { transform: scale(0.94); box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
-        .cash-btn     { background: linear-gradient(135deg, #10b981, #059669); }
-        .transfer-btn { background: linear-gradient(135deg, #3b82f6, #2563eb); }
-        .price-tag    { font-size: 26px; font-weight: 800; letter-spacing: 1px; }
-        .stats-card {
-            background: var(--stat-bg); border: 1px solid var(--border);
-            border-radius: 20px; padding: 18px; margin-bottom: 20px;
-        }
-        .stat-row {
-            display: flex; justify-content: space-between;
-            align-items: center; padding: 10px 0;
-            border-bottom: 1px solid var(--border); font-size: 16px;
-        }
-        .stat-row:last-child { border-bottom: none; }
-        .total-row {
-            font-size: 22px; font-weight: 800; color: var(--success);
-            border-top: 2px solid var(--border);
-            padding-top: 14px; margin-top: 8px;
-        }
-        .stat-value { font-weight: 700; }
-        .action-buttons {
-            display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap;
-        }
-        .btn {
-            border: none; border-radius: 14px;
-            padding: 12px 20px; font-weight: 700; font-size: 14px;
-            cursor: pointer; color: white; transition: opacity 0.2s; flex: 1; text-align: center;
-        }
-        .btn-undo  { background: var(--warning); }
-        .btn-undo:disabled { opacity: 0.4; pointer-events: none; }
-        .btn-reset { background: var(--danger); opacity: 0.8; }
-        .export-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #8b5cf6, #6366f1);
-            color: white; border: none; border-radius: 18px;
-            padding: 18px; font-weight: 800; font-size: 17px;
-            cursor: pointer; box-shadow: var(--btn-shadow);
-            letter-spacing: 0.5px; transition: transform 0.15s;
-            display: flex; align-items: center; justify-content: center; gap: 8px;
-        }
-        .export-btn:active { transform: scale(0.96); }
-        .pulse { animation: pulse 0.4s ease; }
-        @keyframes pulse {
-            0%   { transform: scale(1); }
-            50%  { transform: scale(1.06); color: var(--success); }
-            100% { transform: scale(1); }
-        }
+        /* CONTROL */
+        .control-wrapper { display:flex; justify-content:center; padding:20px 15px 30px; }
+        .app-container { width:100%; max-width:540px; background:var(--card); border-radius:28px; padding:24px 20px; box-shadow:var(--shadow); transition:background .3s; }
+        .config-box { background:var(--stat-bg); border:2px solid var(--primary); border-radius:18px; padding:14px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+        .config-box label, .controller-box label { display:flex; flex-direction:column; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.4px; color:var(--primary); gap:4px; }
+        .config-box select { padding:8px 6px; border-radius:10px; border:1px solid var(--border); background:var(--card); color:var(--text); font-weight:600; font-size:12px; }
+        .controller-box { margin-bottom:20px; }
+        .controller-box select { padding:10px 8px; border-radius:10px; border:1px solid var(--border); background:var(--card); color:var(--text); font-weight:600; font-size:14px; width:100%; }
+        .last-entry { text-align:center; font-size:13px; color:var(--subtext); margin:8px 0 16px; font-weight:500; min-height:20px; }
+        .buttons-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px; }
+        .entry-btn { border:none; border-radius:20px; padding:28px 10px; color:white; font-weight:700; font-size:17px; cursor:pointer; box-shadow:var(--btn-shadow); transition:all .15s ease; display:flex; flex-direction:column; align-items:center; gap:6px; user-select:none; -webkit-tap-highlight-color:transparent; }
+        .entry-btn:active { transform:scale(.94); box-shadow:0 4px 12px rgba(0,0,0,.25); }
+        .cash-btn     { background:linear-gradient(135deg,#10b981,#059669); }
+        .transfer-btn { background:linear-gradient(135deg,#3b82f6,#2563eb); }
+        .price-tag    { font-size:26px; font-weight:800; letter-spacing:1px; }
+        .stats-card { background:var(--stat-bg); border:1px solid var(--border); border-radius:20px; padding:18px; margin-bottom:20px; }
+        .stat-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid var(--border); font-size:16px; }
+        .stat-row:last-child { border-bottom:none; }
+        .total-row { font-size:22px; font-weight:800; color:var(--success); border-top:2px solid var(--border); padding-top:14px; margin-top:8px; }
+        .stat-value { font-weight:700; }
+        .action-buttons { display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap; }
+        .btn { border:none; border-radius:14px; padding:12px 20px; font-weight:700; font-size:14px; cursor:pointer; color:white; transition:opacity .2s; flex:1; text-align:center; }
+        .btn-undo  { background:var(--warning); }
+        .btn-undo:disabled { opacity:.4; pointer-events:none; }
+        .btn-reset { background:var(--danger); opacity:.8; }
+        .export-btn { width:100%; background:linear-gradient(135deg,#8b5cf6,#6366f1); color:white; border:none; border-radius:18px; padding:18px; font-weight:800; font-size:17px; cursor:pointer; box-shadow:var(--btn-shadow); letter-spacing:.5px; transition:transform .15s; display:flex; align-items:center; justify-content:center; gap:8px; }
+        .export-btn:active { transform:scale(.96); }
+
+        /* Alerta reporte descargado */
+        .report-lock-badge { display:none; text-align:center; font-size:12px; font-weight:700; color:var(--warning); background:#fff7ed; border:1px solid var(--warning); border-radius:10px; padding:6px 12px; margin-bottom:12px; }
+        .dark-mode .report-lock-badge { background:#1e293b; }
+
+        .pulse { animation:pulse .4s ease; }
+        @keyframes pulse { 0%{transform:scale(1)} 50%{transform:scale(1.06);color:var(--success)} 100%{transform:scale(1)} }
 
         /* CONSOLIDADOR */
-        .consol-wrapper {
-            display: flex; justify-content: center; padding: 20px 15px 30px;
-        }
-        .consol-container {
-            max-width: 900px; width: 100%;
-            background: var(--card); border-radius: 24px;
-            padding: 30px; box-shadow: var(--shadow); transition: background 0.3s;
-        }
-        .consol-container h1 { color: var(--primary); margin: 0 0 8px; }
-        .subtitle { color: var(--subtext); margin-bottom: 24px; }
-        .drop-zone {
-            border: 2px dashed var(--primary); border-radius: 16px;
-            padding: 40px 20px; text-align: center; margin-bottom: 24px;
-            background: var(--stat-bg); transition: background 0.3s;
-        }
-        .drop-zone.dragover { background: #e0f2fe; }
-        .drop-zone input { display: none; }
-        .btn-select {
-            background: var(--primary); color: white; border: none;
-            padding: 12px 24px; border-radius: 12px;
-            font-weight: 700; cursor: pointer; display: inline-block; margin-top: 10px;
-        }
-        .file-list { margin-bottom: 20px; }
-        .file-item {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 10px 14px; background: var(--stat-bg);
-            border-radius: 10px; margin-bottom: 8px;
-            font-size: 14px; flex-wrap: wrap; gap: 8px;
-        }
-        .file-item .name  { font-weight: 600; }
-        .file-item .stats { color: var(--subtext); }
-        .btn-remove {
-            background: var(--danger); color: white; border: none;
-            border-radius: 50%; width: 24px; height: 24px;
-            cursor: pointer; font-weight: bold; flex-shrink: 0;
-        }
-        .summary-preview { margin: 20px 0; overflow-x: auto; }
-        .summary-preview table { width: 100%; border-collapse: collapse; font-size: 13px; }
-        .summary-preview th { background: var(--primary); color: white; padding: 8px; text-align: left; }
-        .summary-preview td { padding: 8px; border-bottom: 1px solid var(--border); }
-        .btn-generate {
-            width: 100%;
-            background: linear-gradient(135deg, #8b5cf6, #6366f1);
-            color: white; border: none; border-radius: 16px;
-            padding: 16px; font-weight: 800; font-size: 16px;
-            cursor: pointer; margin-top: 20px; transition: transform 0.1s;
-        }
-        .btn-generate:active   { transform: scale(0.97); }
-        .btn-generate:disabled { opacity: 0.5; pointer-events: none; }
-        .error-msg   { color: var(--danger);  font-size: 13px; margin-top: 8px; }
-        .warning-msg { color: var(--warning); font-size: 13px; margin-top: 4px; }
+        .consol-wrapper { display:flex; justify-content:center; padding:20px 15px 30px; }
+        .consol-container { max-width:900px; width:100%; background:var(--card); border-radius:24px; padding:30px; box-shadow:var(--shadow); transition:background .3s; }
+        .consol-container h1 { color:var(--primary); margin:0 0 8px; }
+        .subtitle { color:var(--subtext); margin-bottom:24px; }
+        .drop-zone { border:2px dashed var(--primary); border-radius:16px; padding:40px 20px; text-align:center; margin-bottom:24px; background:var(--stat-bg); transition:background .3s; }
+        .drop-zone.dragover { background:#e0f2fe; }
+        .drop-zone input { display:none; }
+        .btn-select { background:var(--primary); color:white; border:none; padding:12px 24px; border-radius:12px; font-weight:700; cursor:pointer; display:inline-block; margin-top:10px; }
+        .file-list { margin-bottom:20px; }
+        .file-item { display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:var(--stat-bg); border-radius:10px; margin-bottom:8px; font-size:14px; flex-wrap:wrap; gap:8px; }
+        .file-item .name  { font-weight:600; }
+        .file-item .stats { color:var(--subtext); }
+        .btn-remove { background:var(--danger); color:white; border:none; border-radius:50%; width:24px; height:24px; cursor:pointer; font-weight:bold; flex-shrink:0; }
+        .summary-preview { margin:20px 0; overflow-x:auto; }
+        .summary-preview table { width:100%; border-collapse:collapse; font-size:13px; }
+        .summary-preview th { background:var(--primary); color:white; padding:8px; text-align:left; }
+        .summary-preview td { padding:8px; border-bottom:1px solid var(--border); }
+        .btn-generate { width:100%; background:linear-gradient(135deg,#8b5cf6,#6366f1); color:white; border:none; border-radius:16px; padding:16px; font-weight:800; font-size:16px; cursor:pointer; margin-top:20px; transition:transform .1s; }
+        .btn-generate:active   { transform:scale(.97); }
+        .btn-generate:disabled { opacity:.5; pointer-events:none; }
+        .error-msg   { color:var(--danger);  font-size:13px; margin-top:8px; }
+        .warning-msg { color:var(--warning); font-size:13px; margin-top:4px; }
 
         /* MODALES */
-        .modal {
-            display: none; position: fixed; inset: 0;
-            background: rgba(0,0,0,0.6); z-index: 100;
-            justify-content: center; align-items: center;
-        }
-        .modal.active { display: flex; }
-        .modal-content {
-            background: var(--card); border-radius: 24px;
-            padding: 24px; max-width: 380px; width: 90%; color: var(--text);
-        }
-        .modal-content h3 { margin-bottom: 12px; color: var(--primary); }
-        .modal-content p  { margin-bottom: 12px; font-size: 16px; text-align: center; }
-        .modal-content ol { padding-left: 20px; margin-bottom: 12px; }
-        .modal-content ol li { margin-bottom: 8px; line-height: 1.5; }
-        .modal-content input {
-            width: 100%; padding: 10px; border-radius: 10px;
-            border: 2px solid var(--border); font-size: 16px;
-            margin-bottom: 12px; background: var(--bg);
-            color: var(--text); text-align: center;
-        }
-        .modal-buttons { display: flex; gap: 8px; justify-content: center; }
-        .btn-cancel  { background: #94a3b8;       color: white; border: none; border-radius: 10px; padding: 12px 20px; cursor: pointer; font-weight: 600; font-size: 15px; }
-        .btn-safe    { background: var(--success); color: white; border: none; border-radius: 10px; padding: 12px 20px; cursor: pointer; font-weight: 600; font-size: 15px; }
-        .btn-confirm { background: var(--danger);  color: white; border: none; border-radius: 10px; padding: 10px 18px; cursor: pointer; font-weight: 600; }
-        .btn-ok      { background: var(--primary); color: white; border: none; border-radius: 10px; padding: 12px 30px; cursor: pointer; font-weight: 600; font-size: 15px; }
+        .modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,.6); z-index:100; justify-content:center; align-items:center; }
+        .modal.active { display:flex; }
+        .modal-content { background:var(--card); border-radius:24px; padding:24px; max-width:380px; width:90%; color:var(--text); }
+        .modal-content h3 { margin-bottom:12px; color:var(--primary); }
+        .modal-content p  { margin-bottom:12px; font-size:15px; text-align:center; line-height:1.5; }
+        .modal-content ol { padding-left:20px; margin-bottom:12px; }
+        .modal-content ol li { margin-bottom:8px; line-height:1.5; }
+        .modal-content input { width:100%; padding:10px; border-radius:10px; border:2px solid var(--border); font-size:16px; margin-bottom:12px; background:var(--bg); color:var(--text); text-align:center; }
+        .modal-buttons { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+        .btn-cancel  { background:#94a3b8;       color:white; border:none; border-radius:10px; padding:12px 20px; cursor:pointer; font-weight:600; font-size:15px; }
+        .btn-safe    { background:var(--success); color:white; border:none; border-radius:10px; padding:12px 20px; cursor:pointer; font-weight:600; font-size:15px; }
+        .btn-confirm { background:var(--danger);  color:white; border:none; border-radius:10px; padding:10px 18px; cursor:pointer; font-weight:600; }
+        .btn-ok      { background:var(--primary); color:white; border:none; border-radius:10px; padding:12px 30px; cursor:pointer; font-weight:600; font-size:15px; }
+        .modal-warning-box { background:#fff7ed; border:2px solid var(--warning); border-radius:12px; padding:12px; margin-bottom:14px; font-size:13px; color:#92400e; line-height:1.5; }
+        .dark-mode .modal-warning-box { background:#1e293b; color:#fbbf24; }
     </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav class="global-nav">
     <div class="tab-buttons">
         <button class="tab-btn active" id="tab-btn-control" onclick="switchTab('control')">🎫 Control Entradas</button>
@@ -286,7 +124,7 @@
     </div>
 </nav>
 
-<!-- TAB 1: CONTROL DE ENTRADAS -->
+<!-- TAB 1 -->
 <div id="tab-control" class="tab-content active">
     <div class="control-wrapper">
         <div class="app-container">
@@ -328,13 +166,11 @@
             <div class="last-entry" id="last-entry-text">Último registro: —</div>
 
             <div class="buttons-grid">
-                <button class="entry-btn cash-btn" onclick="register('cash')">
-                    💵 Efectivo
-                    <span class="price-tag">$10.000</span>
+                <button class="entry-btn cash-btn"     onclick="register('cash')">
+                    💵 Efectivo<span class="price-tag">$10.000</span>
                 </button>
                 <button class="entry-btn transfer-btn" onclick="register('transfer')">
-                    📱 Transferencia
-                    <span class="price-tag">$10.007</span>
+                    📱 Transferencia<span class="price-tag">$10.007</span>
                 </button>
             </div>
 
@@ -347,6 +183,10 @@
                     <span>📱 Transferencia</span>
                     <span class="stat-value" id="count-transfer">0</span>
                 </div>
+                <div class="stat-row" id="row-anulaciones" style="display:none;">
+                    <span style="color:var(--warning);">↩ Anulaciones</span>
+                    <span class="stat-value" id="count-anulaciones" style="color:var(--warning);">0</span>
+                </div>
                 <div class="stat-row" style="font-weight:800;">
                     <span>👥 Total personas</span>
                     <span class="stat-value" id="count-total">0</span>
@@ -357,8 +197,12 @@
                 </div>
             </div>
 
+            <div class="report-lock-badge" id="report-lock-badge">
+                ⚠️ Reporte ya descargado — Deshacer requiere clave supervisor
+            </div>
+
             <div class="action-buttons">
-                <button class="btn btn-undo"  id="btn-undo" onclick="undoLast()" disabled>↩ Deshacer</button>
+                <button class="btn btn-undo"  id="btn-undo" onclick="handleUndoClick()" disabled>↩ Deshacer</button>
                 <button class="btn btn-reset" onclick="askResetPassword()">🔒 Reiniciar</button>
             </div>
 
@@ -370,27 +214,19 @@
     </div>
 </div>
 
-<!-- TAB 2: CONSOLIDADOR -->
+<!-- TAB 2 -->
 <div id="tab-consol" class="tab-content">
     <div class="consol-wrapper">
         <div class="consol-container">
             <h1>📊 Consolidador de Reportes</h1>
             <p class="subtitle">Torneo 27 de Junio · Uní todos los archivos Excel de las entradas</p>
-
             <div class="drop-zone" id="dropZone">
                 <p>Arrastrá los archivos <strong>.xls</strong> aquí o</p>
-                <label class="btn-select">
-                    Seleccionar archivos
-                    <input type="file" id="fileInput" multiple accept=".xls,.xlsx">
-                </label>
+                <label class="btn-select">Seleccionar archivos<input type="file" id="fileInput" multiple accept=".xls,.xlsx"></label>
             </div>
-
             <div id="fileList"       class="file-list"></div>
             <div id="summaryPreview" class="summary-preview"></div>
-
-            <button class="btn-generate" id="btnGenerate" disabled onclick="generateConsolidatedReport()">
-                📥 Generar Reporte Consolidado
-            </button>
+            <button class="btn-generate" id="btnGenerate" disabled onclick="generateConsolidatedReport()">📥 Generar Reporte Consolidado</button>
             <div id="errorMsg"   class="error-msg"></div>
             <div id="warningMsg" class="warning-msg"></div>
         </div>
@@ -401,11 +237,26 @@
 <div class="modal" id="downloadModal">
     <div class="modal-content">
         <h3>🔒 Descargar Reporte</h3>
-        <p>Ingresá la clave para continuar:</p>
+        <p>Ingresá la clave supervisor para continuar:</p>
         <input type="password" id="downloadPasswordInput" placeholder="Clave" autocomplete="off">
         <div class="modal-buttons">
-            <button class="btn-cancel" onclick="closeDownloadModal()">Cancelar</button>
+            <button class="btn-cancel" onclick="closeModal('downloadModal')">Cancelar</button>
             <button class="btn-safe"   onclick="confirmDownload()">Continuar</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="undoAfterReportModal">
+    <div class="modal-content">
+        <h3>⚠️ Deshacer después de reporte</h3>
+        <div class="modal-warning-box">
+            Ya se descargó un reporte en esta sesión. Esta anulación quedará registrada como <strong>POST-REPORTE</strong> y será visible en todos los reportes posteriores.
+        </div>
+        <p>Ingresá la clave supervisor para autorizar:</p>
+        <input type="password" id="undoAfterReportInput" placeholder="Clave" autocomplete="off">
+        <div class="modal-buttons">
+            <button class="btn-cancel"  onclick="closeModal('undoAfterReportModal')">Cancelar</button>
+            <button class="btn-confirm" onclick="confirmUndoAfterReport()">Autorizar anulación</button>
         </div>
     </div>
 </div>
@@ -414,9 +265,7 @@
     <div class="modal-content">
         <h3>✅ Reporte compartido</h3>
         <p>Seleccioná WhatsApp u otra app para enviarlo.</p>
-        <div class="modal-buttons">
-            <button class="btn-ok" onclick="closeModal('sharedModal')">Listo</button>
-        </div>
+        <div class="modal-buttons"><button class="btn-ok" onclick="closeModal('sharedModal')">Listo</button></div>
     </div>
 </div>
 
@@ -424,9 +273,7 @@
     <div class="modal-content">
         <h3>✅ Reporte descargado</h3>
         <p>¿Ya guardaste el archivo?</p>
-        <div class="modal-buttons">
-            <button class="btn-ok" onclick="closeModal('savedModal')">Sí, guardado</button>
-        </div>
+        <div class="modal-buttons"><button class="btn-ok" onclick="closeModal('savedModal')">Sí, guardado</button></div>
     </div>
 </div>
 
@@ -434,9 +281,10 @@
     <div class="modal-content">
         <h3>📘 Instrucciones</h3>
         <ol>
-            <li>En <strong>Control Entradas</strong>: configurá Acceso, Turno y Controlador, luego registrá cada pago.</li>
-            <li>Al terminar el turno, usá <strong>Descargar Reporte</strong> para guardar el .xls.</li>
-            <li>En <strong>Consolidador</strong>: subí todos los .xls para generar el reporte final unificado.</li>
+            <li>Configurá <strong>Acceso</strong>, <strong>Turno</strong> y <strong>Controlador</strong>, luego registrá cada pago.</li>
+            <li>Cualquier <strong>Deshacer</strong> queda registrado en el historial con hora y responsable.</li>
+            <li>Una vez descargado el reporte, <strong>Deshacer</strong> requiere clave supervisor.</li>
+            <li>En <strong>Consolidador</strong>: subí los .xls de cada entrada para el reporte final.</li>
         </ol>
         <button class="btn" style="background:var(--primary);margin-top:16px;width:100%;" onclick="closeModal('helpModal')">Entendido</button>
     </div>
@@ -444,11 +292,12 @@
 
 <div class="modal" id="passwordModal">
     <div class="modal-content">
-        <h3>🔒 Reiniciar</h3>
-        <p>Ingresá la clave para reiniciar:</p>
+        <h3>🔒 Reiniciar sesión</h3>
+        <div class="modal-warning-box">El reinicio borra los contadores actuales. Se guardará un registro de auditoría automáticamente.</div>
+        <p>Ingresá la clave supervisor:</p>
         <input type="password" id="resetPasswordInput" placeholder="Clave" autocomplete="off">
         <div class="modal-buttons">
-            <button class="btn-cancel" onclick="closeModal('passwordModal')">Cancelar</button>
+            <button class="btn-cancel"  onclick="closeModal('passwordModal')">Cancelar</button>
             <button class="btn-confirm" onclick="confirmReset()">Reiniciar</button>
         </div>
     </div>
@@ -466,222 +315,416 @@ function switchTab(tab) {
 }
 
 /* =====================================================
-   MODALES — helpers
+   MODALES
 ===================================================== */
 function openModal(id)  { document.getElementById(id).classList.add('active'); }
 function closeModal(id) { document.getElementById(id).classList.remove('active'); }
-
-['downloadModal','sharedModal','savedModal','helpModal','passwordModal'].forEach(function(id) {
-    document.getElementById(id).addEventListener('click', function(e) {
-        if (e.target === this) closeModal(id);
-    });
+['downloadModal','undoAfterReportModal','sharedModal','savedModal','helpModal','passwordModal'].forEach(function(id) {
+    document.getElementById(id).addEventListener('click', function(e) { if (e.target === this) closeModal(id); });
 });
-
 function showHelp() { openModal('helpModal'); }
 
 /* =====================================================
-   CONTROL DE ENTRADAS
+   CONSTANTES
 ===================================================== */
-var PASS_DOWNLOAD = 'DESCARGA';
-var PASS_RESET    = 'REINICIA';
-var PRICE_CASH     = 10000;
-var PRICE_TRANSFER = 10007;
+var PASS_SUPERVISOR = 'DESCARGA';   // clave única para descargar, deshacer post-reporte y reiniciar
+var PASS_RESET      = 'REINICIA';
+var PRICE_CASH      = 10000;
+var PRICE_TRANSFER  = 10007;
 
 var SCHEDULE = [
-    { shift: '08:30 - 11:30 | USAG 2',         start: 510,  end: 690  },
-    { shift: '11:45 - 13:15 | USAG 1 A',        start: 705,  end: 795  },
-    { shift: '13:30 - 14:30 | PULGAS',           start: 810,  end: 870  },
-    { shift: '14:45 - 16:00 | E2 Y E3',          start: 885,  end: 960  },
-    { shift: '16:15 - 17:45 | E1 A',             start: 975,  end: 1065 },
-    { shift: '18:00 - 20:30 | E1 B / USAG 1 B', start: 1080, end: 1230 }
+    { shift:'08:30 - 11:30 | USAG 2',         start:510,  end:690  },
+    { shift:'11:45 - 13:15 | USAG 1 A',        start:705,  end:795  },
+    { shift:'13:30 - 14:30 | PULGAS',           start:810,  end:870  },
+    { shift:'14:45 - 16:00 | E2 Y E3',          start:885,  end:960  },
+    { shift:'16:15 - 17:45 | E1 A',             start:975,  end:1065 },
+    { shift:'18:00 - 20:30 | E1 B / USAG 1 B', start:1080, end:1230 }
 ];
 
+/* =====================================================
+   ESTADO
+===================================================== */
+function genSessionId() {
+    return 'SES-' + Date.now().toString(36).toUpperCase();
+}
+
 var appData = JSON.parse(localStorage.getItem('torneoJunioData') || 'null') || {
-    config:  { gate: 'Entrada 1', shift: '', controller: 'Maylén' },
-    counts:  { cash: 0, transfer: 0 },
-    history: []
+    sessionId: genSessionId(),
+    config:  { gate:'Entrada 1', shift:'', controller:'Maylén' },
+    counts:  { cash:0, transfer:0 },
+    history: [],
+    reportDownloaded: false,
+    reportCount: 0
 };
-var lastTap = 0;
+
+/* Migrar historial viejo que no tenga campos type/anulled */
+appData.history = appData.history.map(function(h) {
+    if (!h.type)           h.type    = 'entry';
+    if (h.anulled == null) h.anulled = false;
+    return h;
+});
+
+var lastTap  = 0;
 var DEBOUNCE = 350;
 
+/* =====================================================
+   HELPERS DE TIEMPO
+===================================================== */
+function nowTime() {
+    return new Date().toLocaleTimeString('es-AR', { hour:'2-digit', minute:'2-digit', second:'2-digit' });
+}
+function nowDate() {
+    return new Date().toLocaleDateString('es-AR', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+}
+
+/* =====================================================
+   TURNO AUTOMÁTICO
+===================================================== */
 function getShiftByTime() {
-    var now  = new Date();
-    var mins = now.getHours() * 60 + now.getMinutes();
+    var mins = new Date().getHours() * 60 + new Date().getMinutes();
     for (var i = 0; i < SCHEDULE.length; i++) {
         if (mins >= SCHEDULE[i].start && mins < SCHEDULE[i].end) return SCHEDULE[i].shift;
     }
     return '';
 }
-
 function autoSelectShift() {
     var detected = getShiftByTime();
-    if (detected) {
-        appData.config.shift = detected;
-    } else if (!appData.config.shift) {
-        appData.config.shift = SCHEDULE[0].shift;
-    }
+    if (detected) appData.config.shift = detected;
+    else if (!appData.config.shift) appData.config.shift = SCHEDULE[0].shift;
 }
 
+/* =====================================================
+   PERSISTENCIA
+===================================================== */
 function saveConfig() {
     appData.config.gate       = document.getElementById('gate-select').value;
     appData.config.shift      = document.getElementById('shift-select').value;
     appData.config.controller = document.getElementById('controller-select').value;
     saveData();
 }
+function saveData() { localStorage.setItem('torneoJunioData', JSON.stringify(appData)); }
 
-function saveData() {
-    localStorage.setItem('torneoJunioData', JSON.stringify(appData));
-}
-
+/* =====================================================
+   UI UPDATE
+===================================================== */
 function updateUI() {
     document.getElementById('gate-select').value       = appData.config.gate;
     document.getElementById('shift-select').value      = appData.config.shift;
     document.getElementById('controller-select').value = appData.config.controller;
     document.getElementById('count-cash').textContent      = appData.counts.cash;
     document.getElementById('count-transfer').textContent  = appData.counts.transfer;
+
     var total = appData.counts.cash + appData.counts.transfer;
     document.getElementById('count-total').textContent = total;
     var money = (appData.counts.cash * PRICE_CASH) + (appData.counts.transfer * PRICE_TRANSFER);
     document.getElementById('money-total').textContent = '$' + money.toLocaleString('es-AR');
-    document.getElementById('btn-undo').disabled = appData.history.length === 0;
-    if (appData.history.length > 0) {
-        var last = appData.history[appData.history.length - 1];
-        var m = last.method === 'cash' ? '💵 Efectivo' : '📱 Transferencia';
-        document.getElementById('last-entry-text').textContent =
-            'Último: ' + m + ' a las ' + last.time + ' (' + last.category + ') – ' + last.gate + ' – ' + last.controller;
+
+    /* Anulaciones */
+    var anulCount = 0;
+    for (var i = 0; i < appData.history.length; i++) {
+        if (appData.history[i].type === 'anulacion') anulCount++;
+    }
+    document.getElementById('count-anulaciones').textContent = anulCount;
+    document.getElementById('row-anulaciones').style.display = anulCount > 0 ? '' : 'none';
+
+    /* Botón deshacer: activo solo si hay algún entry no anulado */
+    var hasUndoable = false;
+    for (var j = 0; j < appData.history.length; j++) {
+        if (appData.history[j].type === 'entry' && !appData.history[j].anulled) { hasUndoable = true; break; }
+    }
+    document.getElementById('btn-undo').disabled = !hasUndoable;
+
+    /* Badge de reporte descargado */
+    document.getElementById('report-lock-badge').style.display = appData.reportDownloaded ? '' : 'none';
+
+    /* Último registro */
+    var lastEntry = null;
+    for (var k = appData.history.length - 1; k >= 0; k--) {
+        if (appData.history[k].type === 'entry' || appData.history[k].type === 'anulacion') {
+            lastEntry = appData.history[k]; break;
+        }
+    }
+    if (lastEntry) {
+        var txt = '';
+        if (lastEntry.type === 'entry') {
+            var m = lastEntry.method === 'cash' ? '💵 Efectivo' : '📱 Transferencia';
+            txt = 'Último: ' + m + ' a las ' + lastEntry.time + ' – ' + lastEntry.gate;
+        } else {
+            txt = '↩ Anulación a las ' + lastEntry.time + ' – ' + lastEntry.controller;
+        }
+        document.getElementById('last-entry-text').textContent = txt;
     } else {
         document.getElementById('last-entry-text').textContent = 'Último registro: —';
     }
+
     saveData();
 }
 
+/* =====================================================
+   REGISTRAR ENTRADA
+===================================================== */
 function register(method) {
     var now = Date.now();
     if (now - lastTap < DEBOUNCE) return;
     lastTap = now;
+
     if (method === 'cash') appData.counts.cash++;
     else appData.counts.transfer++;
-    var timeStr  = new Date().toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+
     var shift    = appData.config.shift;
     var category = shift.indexOf('|') >= 0 ? shift.split('|')[1].trim() : shift;
+
     appData.history.push({
-        id: appData.history.length + 1,
-        method: method,
-        time: timeStr,
-        category: category,
-        shift: shift,
-        gate: appData.config.gate,
-        controller: appData.config.controller
+        id:         appData.history.length + 1,
+        type:       'entry',
+        method:     method,
+        time:       nowTime(),
+        category:   category,
+        shift:      shift,
+        gate:       appData.config.gate,
+        controller: appData.config.controller,
+        anulled:    false
     });
+
     if (navigator.vibrate) navigator.vibrate(40);
     updateUI();
     var el = document.getElementById('count-total');
-    el.classList.remove('pulse');
-    void el.offsetWidth;
-    el.classList.add('pulse');
+    el.classList.remove('pulse'); void el.offsetWidth; el.classList.add('pulse');
 }
 
-function undoLast() {
-    if (!appData.history.length) return;
-    var last = appData.history.pop();
-    if (last.method === 'cash') appData.counts.cash     = Math.max(0, appData.counts.cash - 1);
-    else                        appData.counts.transfer = Math.max(0, appData.counts.transfer - 1);
+/* =====================================================
+   DESHACER — con auditoría completa
+===================================================== */
+function handleUndoClick() {
+    if (appData.reportDownloaded) {
+        document.getElementById('undoAfterReportInput').value = '';
+        openModal('undoAfterReportModal');
+        setTimeout(function() { document.getElementById('undoAfterReportInput').focus(); }, 100);
+    } else {
+        undoLast(false);
+    }
+}
+
+function confirmUndoAfterReport() {
+    if (document.getElementById('undoAfterReportInput').value !== PASS_SUPERVISOR) {
+        alert('Clave incorrecta. Operación no autorizada.');
+        document.getElementById('undoAfterReportInput').value = '';
+        document.getElementById('undoAfterReportInput').focus();
+        return;
+    }
+    closeModal('undoAfterReportModal');
+    undoLast(true);
+}
+
+function undoLast(isPostReport) {
+    /* Buscar el último entry no anulado */
+    var targetIndex = -1;
+    for (var i = appData.history.length - 1; i >= 0; i--) {
+        if (appData.history[i].type === 'entry' && !appData.history[i].anulled) {
+            targetIndex = i; break;
+        }
+    }
+    if (targetIndex === -1) return;
+
+    var entry      = appData.history[targetIndex];
+    entry.anulled  = true;
+
+    /* Registrar evento de anulación — NUNCA se borra */
+    appData.history.push({
+        id:             appData.history.length + 1,
+        type:           'anulacion',
+        originalId:     entry.id,
+        originalMethod: entry.method,
+        originalTime:   entry.time,
+        time:           nowTime(),
+        gate:           appData.config.gate,
+        controller:     appData.config.controller,
+        postReport:     !!isPostReport
+    });
+
+    if (entry.method === 'cash') appData.counts.cash     = Math.max(0, appData.counts.cash - 1);
+    else                         appData.counts.transfer = Math.max(0, appData.counts.transfer - 1);
+
     updateUI();
 }
 
-function resetCounters() {
-    appData.counts.cash = 0;
-    appData.counts.transfer = 0;
-    appData.history = [];
-    updateUI();
+/* =====================================================
+   REINICIAR — con log de auditoría persistente
+===================================================== */
+function askResetPassword() {
+    document.getElementById('resetPasswordInput').value = '';
+    openModal('passwordModal');
+    setTimeout(function() { document.getElementById('resetPasswordInput').focus(); }, 100);
 }
 
-/* --- Descarga --- */
+function confirmReset() {
+    if (document.getElementById('resetPasswordInput').value !== PASS_RESET) {
+        alert('Clave incorrecta.');
+        document.getElementById('resetPasswordInput').value = '';
+        document.getElementById('resetPasswordInput').focus();
+        return;
+    }
+    closeModal('passwordModal');
+
+    /* Guardar en log de auditoría (persiste aunque se reinicie) */
+    var anulCount = 0;
+    for (var i = 0; i < appData.history.length; i++) {
+        if (appData.history[i].type === 'anulacion') anulCount++;
+    }
+    var resetLog = JSON.parse(localStorage.getItem('torneoResetLog') || '[]');
+    resetLog.push({
+        fecha:            nowDate(),
+        hora:             nowTime(),
+        sessionId:        appData.sessionId,
+        gate:             appData.config.gate,
+        controller:       appData.config.controller,
+        cashNeto:         appData.counts.cash,
+        transferNeto:     appData.counts.transfer,
+        totalEntradas:    appData.history.filter(function(h){ return h.type === 'entry'; }).length,
+        totalAnulaciones: anulCount,
+        reportDescargado: appData.reportDownloaded
+    });
+    localStorage.setItem('torneoResetLog', JSON.stringify(resetLog));
+
+    /* Reset */
+    appData.counts.cash      = 0;
+    appData.counts.transfer  = 0;
+    appData.history          = [];
+    appData.reportDownloaded = false;
+    appData.reportCount      = 0;
+    appData.sessionId        = genSessionId();
+    updateUI();
+    alert('Sesión reiniciada. El log de auditoría se guardó en el dispositivo.');
+}
+
+/* =====================================================
+   DESCARGAR REPORTE
+===================================================== */
 function askDownloadPassword() {
     document.getElementById('downloadPasswordInput').value = '';
     openModal('downloadModal');
     setTimeout(function() { document.getElementById('downloadPasswordInput').focus(); }, 100);
 }
-function closeDownloadModal() { closeModal('downloadModal'); }
 
 function confirmDownload() {
-    if (document.getElementById('downloadPasswordInput').value !== PASS_DOWNLOAD) {
+    if (document.getElementById('downloadPasswordInput').value !== PASS_SUPERVISOR) {
         alert('Clave incorrecta.');
         document.getElementById('downloadPasswordInput').value = '';
         document.getElementById('downloadPasswordInput').focus();
         return;
     }
-    closeDownloadModal();
+    closeModal('downloadModal');
 
-    var date        = new Date().toLocaleDateString('es-AR', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+    appData.reportDownloaded = true;
+    appData.reportCount      = (appData.reportCount || 0) + 1;
+    saveData();
+
     var totalCash   = appData.counts.cash * PRICE_CASH;
     var totalTrans  = appData.counts.transfer * PRICE_TRANSFER;
     var totalPeople = appData.counts.cash + appData.counts.transfer;
     var totalMoney  = totalCash + totalTrans;
 
-    var filas = '';
+    /* Contar anulaciones y post-report */
+    var anulTotal     = 0;
+    var anulPostRep   = 0;
     for (var i = 0; i < appData.history.length; i++) {
-        var e = appData.history[i];
-        var badge  = e.method === 'cash' ? 'cash-badge' : 'transfer-badge';
-        var metodo = e.method === 'cash' ? 'Efectivo' : 'Transferencia';
-        filas += '<tr>' +
-            '<td>' + e.id + '</td>' +
-            '<td><span class="' + badge + '">' + metodo + '</span></td>' +
-            '<td>' + e.time + '</td>' +
-            '<td><span class="category-badge">' + e.category + '</span></td>' +
-            '<td>' + e.shift + '</td>' +
-            '<td><span class="gate-badge">' + e.gate + '</span></td>' +
-            '<td><span class="controller-badge">' + e.controller + '</span></td>' +
-            '</tr>';
+        if (appData.history[i].type === 'anulacion') {
+            anulTotal++;
+            if (appData.history[i].postReport) anulPostRep++;
+        }
     }
 
-    var css = [
-        'body{font-family:Segoe UI,Arial,sans-serif;margin:30px;background:#f4f6fb;}',
-        '.rc{max-width:950px;margin:auto;background:white;border-radius:24px;padding:30px;box-shadow:0 10px 40px rgba(0,0,0,.1);}',
-        '.hdr{margin-bottom:24px;border-bottom:3px solid #3b82f6;padding-bottom:16px;}',
-        '.logo{font-size:24px;font-weight:800;color:#3b82f6;}',
-        '.meta{color:#64748b;font-size:14px;}',
-        'h2{color:#1e293b;margin:16px 0 8px;}',
-        '.st{width:100%;border-collapse:collapse;margin-bottom:28px;border-radius:16px;overflow:hidden;}',
-        '.st th{background:#3b82f6;color:white;padding:12px;text-align:left;font-size:14px;}',
-        '.st td{padding:12px;border-bottom:1px solid #e2e8f0;font-weight:600;}',
-        '.dt{width:100%;border-collapse:collapse;font-size:12px;border-radius:12px;overflow:hidden;}',
-        '.dt th{background:#10b981;color:white;padding:10px;text-align:center;}',
-        '.dt td{padding:8px;text-align:center;border-bottom:1px solid #e2e8f0;}',
-        '.cash-badge{background:#d1fae5;color:#065f46;padding:4px 12px;border-radius:20px;font-weight:bold;}',
-        '.transfer-badge{background:#dbeafe;color:#1e40af;padding:4px 12px;border-radius:20px;font-weight:bold;}',
-        '.category-badge{background:#fef3c7;color:#92400e;padding:4px 12px;border-radius:20px;font-weight:bold;}',
-        '.controller-badge{background:#ede9fe;color:#5b21b6;padding:4px 12px;border-radius:20px;font-weight:bold;}',
-        '.gate-badge{background:#e0f2fe;color:#0369a1;padding:4px 12px;border-radius:20px;font-weight:bold;}',
-        '.footer{margin-top:28px;text-align:center;color:#94a3b8;font-size:12px;}'
-    ].join('');
+    /* Leer reset log */
+    var resetLog = JSON.parse(localStorage.getItem('torneoResetLog') || '[]');
+    var resetWarning = '';
+    if (resetLog.length > 0) {
+        resetWarning = '<div style="background:#fee2e2;border:2px solid #ef4444;border-radius:12px;padding:14px;margin-bottom:20px;color:#991b1b;">' +
+            '<strong>⚠️ ATENCIÓN: Se registraron ' + resetLog.length + ' reinicio(s) en este dispositivo.</strong><br>' +
+            '<small>Revisá el log de auditoría completo para más detalles.</small></div>';
+    }
+    var anulWarning = '';
+    if (anulPostRep > 0) {
+        anulWarning = '<div style="background:#fff7ed;border:2px solid #f59e0b;border-radius:12px;padding:14px;margin-bottom:20px;color:#92400e;">' +
+            '<strong>⚠️ ' + anulPostRep + ' anulación(es) realizadas DESPUÉS de descargar un reporte anterior.</strong> Verificar autorización.</div>';
+    }
 
-    var html = '﻿<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Reporte</title>' +
+    /* Filas del historial */
+    var filas = '';
+    for (var j = 0; j < appData.history.length; j++) {
+        var ev = appData.history[j];
+        if (ev.type === 'entry') {
+            var badge  = ev.method === 'cash' ? 'cash-badge' : 'transfer-badge';
+            var metodo = ev.method === 'cash' ? 'Efectivo' : 'Transferencia';
+            var rowStyle = ev.anulled ? ' style="color:#94a3b8;text-decoration:line-through;background:#f8fafc;"' : '';
+            var anulTag  = ev.anulled ? ' <span style="background:#fee2e2;color:#991b1b;padding:2px 8px;border-radius:8px;font-size:10px;font-weight:bold;">ANULADO</span>' : '';
+            filas += '<tr' + rowStyle + '><td>' + ev.id + '</td>' +
+                '<td><span class="' + badge + '">' + metodo + '</span>' + anulTag + '</td>' +
+                '<td>' + ev.time + '</td>' +
+                '<td><span class="category-badge">' + ev.category + '</span></td>' +
+                '<td>' + ev.shift + '</td>' +
+                '<td><span class="gate-badge">' + ev.gate + '</span></td>' +
+                '<td><span class="controller-badge">' + ev.controller + '</span></td></tr>';
+        } else if (ev.type === 'anulacion') {
+            var postTag = ev.postReport ? ' <span style="background:#ef4444;color:white;padding:2px 8px;border-radius:8px;font-size:10px;font-weight:bold;">⚠️ POST-REPORTE</span>' : '';
+            filas += '<tr style="background:#fff7ed;">' +
+                '<td>' + ev.id + '</td>' +
+                '<td><span style="background:#fed7aa;color:#9a3412;padding:4px 12px;border-radius:20px;font-weight:bold;">↩ ANULACIÓN #' + ev.originalId + '</span>' + postTag + '</td>' +
+                '<td>' + ev.time + '</td>' +
+                '<td colspan="2" style="color:#92400e;font-size:12px;">Anulación de: ' + (ev.originalMethod === 'cash' ? 'Efectivo' : 'Transferencia') + ' registrado a las ' + ev.originalTime + '</td>' +
+                '<td><span class="gate-badge">' + ev.gate + '</span></td>' +
+                '<td><span class="controller-badge">' + ev.controller + '</span></td></tr>';
+        }
+    }
+
+    var css = 'body{font-family:Segoe UI,Arial,sans-serif;margin:30px;background:#f4f6fb;}' +
+        '.rc{max-width:950px;margin:auto;background:white;border-radius:24px;padding:30px;box-shadow:0 10px 40px rgba(0,0,0,.1);}' +
+        '.hdr{margin-bottom:24px;border-bottom:3px solid #3b82f6;padding-bottom:16px;}' +
+        '.logo{font-size:24px;font-weight:800;color:#3b82f6;}.meta{color:#64748b;font-size:13px;line-height:1.8;}' +
+        'h2{color:#1e293b;margin:20px 0 8px;}' +
+        '.st{width:100%;border-collapse:collapse;margin-bottom:20px;border-radius:16px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.05);}' +
+        '.st th{background:#3b82f6;color:white;padding:12px;text-align:left;font-size:14px;}' +
+        '.st td{padding:12px;border-bottom:1px solid #e2e8f0;font-weight:600;}' +
+        '.dt{width:100%;border-collapse:collapse;font-size:12px;border-radius:12px;overflow:hidden;}' +
+        '.dt th{background:#10b981;color:white;padding:10px;text-align:center;}' +
+        '.dt td{padding:8px;text-align:center;border-bottom:1px solid #e2e8f0;}' +
+        '.cash-badge{background:#d1fae5;color:#065f46;padding:4px 12px;border-radius:20px;font-weight:bold;}' +
+        '.transfer-badge{background:#dbeafe;color:#1e40af;padding:4px 12px;border-radius:20px;font-weight:bold;}' +
+        '.category-badge{background:#fef3c7;color:#92400e;padding:4px 12px;border-radius:20px;font-weight:bold;}' +
+        '.controller-badge{background:#ede9fe;color:#5b21b6;padding:4px 12px;border-radius:20px;font-weight:bold;}' +
+        '.gate-badge{background:#e0f2fe;color:#0369a1;padding:4px 12px;border-radius:20px;font-weight:bold;}' +
+        '.footer{margin-top:28px;text-align:center;color:#94a3b8;font-size:12px;}';
+
+    var html = '<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Reporte</title>' +
         '<style>' + css + '</style></head><body><div class="rc">' +
         '<div class="hdr"><div class="logo">🎫 Torneo 27 Junio</div>' +
-        '<div class="meta">' + date + '<br>' + appData.config.gate + ' · ' + appData.config.controller + '</div></div>' +
+        '<div class="meta">' +
+            nowDate() + '<br>' +
+            appData.config.gate + ' · ' + appData.config.controller + '<br>' +
+            'Sesión: <strong>' + appData.sessionId + '</strong> · Reporte #' + appData.reportCount + ' · Generado: ' + nowTime() +
+        '</div></div>' +
+        resetWarning + anulWarning +
         '<h2>📊 Resumen de Recaudación</h2>' +
-        '<table class="st"><tr><th>Concepto</th><th>Cantidad</th><th>Precio Unit.</th><th>Subtotal</th></tr>' +
+        '<table class="st"><tr><th>Concepto</th><th>Cantidad neta</th><th>Precio Unit.</th><th>Subtotal</th></tr>' +
         '<tr><td>💵 Efectivo</td><td>' + appData.counts.cash + '</td><td>$' + PRICE_CASH.toLocaleString() + '</td><td>$' + totalCash.toLocaleString() + '</td></tr>' +
         '<tr><td>📱 Transferencia</td><td>' + appData.counts.transfer + '</td><td>$' + PRICE_TRANSFER.toLocaleString() + '</td><td>$' + totalTrans.toLocaleString() + '</td></tr>' +
-        '<tr style="background:#f1f5f9"><td><strong>👥 Total personas</strong></td><td><strong>' + totalPeople + '</strong></td><td></td><td></td></tr>' +
+        (anulTotal > 0 ? '<tr style="background:#fff7ed;"><td>↩ Anulaciones registradas</td><td colspan="3" style="color:#92400e;font-weight:bold;">' + anulTotal + ' (ver detalle abajo)</td></tr>' : '') +
+        '<tr style="background:#f1f5f9;"><td><strong>👥 Total personas</strong></td><td><strong>' + totalPeople + '</strong></td><td></td><td></td></tr>' +
         '<tr><td colspan="3"><strong>💰 TOTAL RECAUDADO</strong></td><td><strong>$' + totalMoney.toLocaleString() + '</strong></td></tr></table>' +
-        '<h2>📋 Registro Detallado de Ingresos</h2>' +
-        '<table class="dt"><tr><th>#</th><th>Método</th><th>Hora</th><th>Categoría</th><th>Turno</th><th>Acceso</th><th>Controlador</th></tr>' +
+        '<h2>📋 Historial Completo (entradas y anulaciones)</h2>' +
+        '<table class="dt"><tr><th>#</th><th>Método / Evento</th><th>Hora</th><th>Categoría</th><th>Turno</th><th>Acceso</th><th>Controlador</th></tr>' +
         filas + '</table>' +
-        '<div class="footer">Generado automáticamente · Torneo 27 de Junio</div></div></body></html>';
+        '<div class="footer">Generado automáticamente · Torneo 27 de Junio · ' + appData.sessionId + '</div>' +
+        '</div></body></html>';
 
-    var filename = 'Recaudacion_' + appData.config.gate.replace(/ /g, '_') + '_Final.xls';
-    var blob = new Blob([html], { type: 'application/vnd.ms-excel;charset=utf-8' });
+    var filename = 'Reporte_' + appData.config.gate.replace(/ /g,'_') + '_' + appData.sessionId + '_N' + appData.reportCount + '.xls';
+    var blob     = new Blob([html], { type:'application/vnd.ms-excel;charset=utf-8' });
 
     if (navigator.canShare) {
-        var file = new File([blob], filename, { type: 'application/vnd.ms-excel' });
-        if (navigator.canShare({ files: [file] })) {
-            navigator.share({ files: [file], title: 'Reporte de Recaudación', text: 'Reporte final del torneo.' })
+        var file = new File([blob], filename, { type:'application/vnd.ms-excel' });
+        if (navigator.canShare({ files:[file] })) {
+            navigator.share({ files:[file], title:'Reporte Torneo', text:'Reporte ' + appData.config.gate })
                 .then(function() { openModal('sharedModal'); })
-                .catch(function(err) {
-                    if (err.name !== 'AbortError') descargarBlob(blob, filename);
-                });
+                .catch(function(err) { if (err.name !== 'AbortError') descargarBlob(blob, filename); });
             return;
         }
     }
@@ -697,45 +740,26 @@ function descargarBlob(blob, filename) {
     openModal('savedModal');
 }
 
-/* --- Reiniciar --- */
-function askResetPassword() {
-    document.getElementById('resetPasswordInput').value = '';
-    openModal('passwordModal');
-    setTimeout(function() { document.getElementById('resetPasswordInput').focus(); }, 100);
-}
-
-function confirmReset() {
-    if (document.getElementById('resetPasswordInput').value === PASS_RESET) {
-        resetCounters();
-        closeModal('passwordModal');
-        alert('Contadores reiniciados.');
-    } else {
-        alert('Clave incorrecta.');
-        document.getElementById('resetPasswordInput').value = '';
-        document.getElementById('resetPasswordInput').focus();
-    }
-}
-
-/* Enter en inputs de contraseña */
-document.getElementById('downloadPasswordInput').addEventListener('keydown', function(e) { if (e.key === 'Enter') confirmDownload(); });
-document.getElementById('resetPasswordInput').addEventListener('keydown',    function(e) { if (e.key === 'Enter') confirmReset(); });
+/* =====================================================
+   ENTER en inputs de contraseña
+===================================================== */
+document.getElementById('downloadPasswordInput').addEventListener('keydown', function(e)   { if (e.key==='Enter') confirmDownload(); });
+document.getElementById('resetPasswordInput').addEventListener('keydown',    function(e)   { if (e.key==='Enter') confirmReset(); });
+document.getElementById('undoAfterReportInput').addEventListener('keydown',  function(e)   { if (e.key==='Enter') confirmUndoAfterReport(); });
 
 /* =====================================================
    CONSOLIDADOR
 ===================================================== */
-var loadedData   = [];
-var consolWarn   = [];
-var ACCESS_KW    = ['entrada', 'acceso', 'puerta', 'gate'];
+var loadedData = [];
+var consolWarn = [];
+var ACCESS_KW  = ['entrada','acceso','puerta','gate'];
 
 function isRealController(name) {
     if (!name || !name.trim()) return false;
     var lower = name.toLowerCase();
-    for (var i = 0; i < ACCESS_KW.length; i++) {
-        if (lower.indexOf(ACCESS_KW[i]) >= 0) return false;
-    }
+    for (var i = 0; i < ACCESS_KW.length; i++) { if (lower.indexOf(ACCESS_KW[i]) >= 0) return false; }
     return true;
 }
-
 function safeText(el) { return el ? el.textContent.trim() : ''; }
 
 function handleFiles(files) {
@@ -746,16 +770,12 @@ function handleFiles(files) {
     document.getElementById('errorMsg').textContent    = '';
     document.getElementById('warningMsg').textContent  = '';
     if (!files || !files.length) return;
-
-    var total = files.length;
-    var done  = 0;
-
+    var total = files.length, done = 0;
     for (var i = 0; i < files.length; i++) {
         (function(file) {
             if (!file.name.match(/\.xlsx?$/i)) {
-                consolWarn.push('"' + file.name + '" no es un archivo .xls/.xlsx válido.');
-                if (++done === total) finalizeLoad();
-                return;
+                consolWarn.push('"' + file.name + '" no es .xls/.xlsx válido.');
+                if (++done === total) finalizeLoad(); return;
             }
             var reader = new FileReader();
             reader.onload = function(ev) {
@@ -763,9 +783,7 @@ function handleFiles(files) {
                     var result = extractFromHTML(ev.target.result, file.name);
                     if (result.error) consolWarn.push(result.error);
                     else loadedData.push(result);
-                } catch(ex) {
-                    consolWarn.push('Error en "' + file.name + '": ' + ex.message);
-                }
+                } catch(ex) { consolWarn.push('Error en "' + file.name + '": ' + ex.message); }
                 if (++done === total) finalizeLoad();
             };
             reader.onerror = function() {
@@ -778,85 +796,68 @@ function handleFiles(files) {
 }
 
 function finalizeLoad() {
-    if (consolWarn.length) {
-        document.getElementById('warningMsg').textContent = '⚠️ ' + consolWarn.join(' | ');
-    }
+    if (consolWarn.length) document.getElementById('warningMsg').textContent = '⚠️ ' + consolWarn.join(' | ');
     renderFileList();
 }
 
 function extractFromHTML(htmlText, fileName) {
-    var doc = new DOMParser().parseFromString(htmlText, 'text/html');
-
+    var doc    = new DOMParser().parseFromString(htmlText, 'text/html');
     var metaEl = doc.querySelector('.meta');
-    var gate = '', date = '';
+    var gate   = '', date = '';
     if (metaEl) {
-        var lines = metaEl.innerText.split('\n').map(function(l) { return l.trim(); }).filter(Boolean);
+        var lines = metaEl.innerText.split('\n').map(function(l){return l.trim();}).filter(Boolean);
         date = lines[0] || '';
         gate = lines.length > 1 ? lines[1].split('·')[0].trim() : '';
     }
-
     var summaryTable = doc.querySelector('.summary-table, .st');
-    if (!summaryTable) return { error: 'No se encontró tabla de resumen en "' + fileName + '".' };
-
-    var resumen = { efectivoCant: 0, transferenciaCant: 0, totalPersonas: 0, totalRecaudado: 0 };
+    if (!summaryTable) return { error:'No se encontró tabla de resumen en "' + fileName + '".' };
+    var resumen = { efectivoCant:0, transferenciaCant:0, totalPersonas:0, totalRecaudado:0 };
     var rows = summaryTable.querySelectorAll('tr');
     for (var i = 0; i < rows.length; i++) {
         var cells = rows[i].querySelectorAll('td');
         if (cells.length < 2) continue;
         var concepto = safeText(cells[0]);
-        var cantidad = parseInt(safeText(cells[1]).replace(/\D/g, '')) || 0;
-        if      (concepto.indexOf('Efectivo') >= 0)       resumen.efectivoCant     = cantidad;
-        else if (concepto.indexOf('Transferencia') >= 0)  resumen.transferenciaCant = cantidad;
-        else if (concepto.indexOf('Total personas') >= 0) resumen.totalPersonas    = cantidad;
+        var cantidad = parseInt(safeText(cells[1]).replace(/\D/g,'')) || 0;
+        if      (concepto.indexOf('Efectivo')        >= 0) resumen.efectivoCant     = cantidad;
+        else if (concepto.indexOf('Transferencia')   >= 0) resumen.transferenciaCant = cantidad;
+        else if (concepto.indexOf('Total personas')  >= 0) resumen.totalPersonas    = cantidad;
         else if (concepto.indexOf('TOTAL RECAUDADO') >= 0) {
             var mc = cells.length >= 4 ? cells[3] : cells[1];
-            resumen.totalRecaudado = parseInt(safeText(mc).replace(/[^0-9]/g, '')) || 0;
+            resumen.totalRecaudado = parseInt(safeText(mc).replace(/[^0-9]/g,'')) || 0;
         }
     }
-
     var detailTable = doc.querySelector('.detail-table, .dt');
     var detalles = [];
     if (detailTable) {
         var headers = detailTable.querySelectorAll('th');
-        var headerTexts = [];
-        for (var h = 0; h < headers.length; h++) headerTexts.push(safeText(headers[h]));
-        var hasAccess = headerTexts.indexOf('Acceso') >= 0;
-        var hasCtrl   = headerTexts.indexOf('Controlador') >= 0;
-        var hasArch   = headerTexts.indexOf('Archivo origen') >= 0;
-
+        var ht = [];
+        for (var h = 0; h < headers.length; h++) ht.push(safeText(headers[h]));
+        var hasAccess = ht.indexOf('Acceso') >= 0;
+        var hasCtrl   = ht.indexOf('Controlador') >= 0;
+        var hasArch   = ht.indexOf('Archivo origen') >= 0;
         var drows = detailTable.querySelectorAll('tr');
         for (var r = 0; r < drows.length; r++) {
-            var dcells = drows[r].querySelectorAll('td');
-            if (!dcells.length) continue;
-            var id = safeText(dcells[0]);
-            if (!id) continue;
-
-            var metodo    = safeText(dcells[1]);
-            var hora      = safeText(dcells[2]);
-            var categoria = safeText(dcells[3]);
-            var turno     = safeText(dcells[4]);
+            var dc = drows[r].querySelectorAll('td');
+            if (!dc.length) continue;
+            var id = safeText(dc[0]); if (!id) continue;
+            var metodo = safeText(dc[1]); var hora = safeText(dc[2]); var categoria = safeText(dc[3]); var turno = safeText(dc[4]);
             var acceso = '', ctrlRaw = '', archivo = '';
-
             if (hasArch) {
-                if (hasAccess && hasCtrl) { acceso = safeText(dcells[5]); ctrlRaw = safeText(dcells[6]); archivo = safeText(dcells[7]); }
-                else if (hasCtrl)         { ctrlRaw = safeText(dcells[5]); archivo = safeText(dcells[6]); }
-                else                      { archivo = safeText(dcells[5]); }
+                if (hasAccess && hasCtrl) { acceso=safeText(dc[5]); ctrlRaw=safeText(dc[6]); archivo=safeText(dc[7]); }
+                else if (hasCtrl)         { ctrlRaw=safeText(dc[5]); archivo=safeText(dc[6]); }
+                else                      { archivo=safeText(dc[5]); }
             } else {
-                if (hasAccess && hasCtrl) { acceso = safeText(dcells[5]); ctrlRaw = safeText(dcells[6]); }
-                else if (hasCtrl)         { ctrlRaw = safeText(dcells[5]); }
-                else if (hasAccess)       { acceso = safeText(dcells[5]); }
+                if (hasAccess && hasCtrl) { acceso=safeText(dc[5]); ctrlRaw=safeText(dc[6]); }
+                else if (hasCtrl)         { ctrlRaw=safeText(dc[5]); }
+                else if (hasAccess)       { acceso=safeText(dc[5]); }
             }
-
             var controlador = isRealController(ctrlRaw) ? ctrlRaw : 'No especificado';
             if (!isRealController(ctrlRaw) && !acceso) acceso = ctrlRaw;
             if (!acceso) acceso = gate || '';
-
-            detalles.push({ id: id, metodo: metodo, hora: hora, categoria: categoria,
-                turno: turno, acceso: acceso, controlador: controlador, archivo: archivo });
+            detalles.push({ id:id, metodo:metodo, hora:hora, categoria:categoria, turno:turno, acceso:acceso, controlador:controlador, archivo:archivo });
         }
     }
-
-    return { fileName: fileName, gate: gate, date: date, resumen: resumen, detalles: detalles };
+    return { fileName:fileName, gate:gate, date:date, resumen:resumen, detalles:detalles };
 }
 
 function renderFileList() {
@@ -873,160 +874,78 @@ function renderFileList() {
             '<button class="btn-remove" onclick="removeFile(' + i + ')">✕</button>';
         document.getElementById('fileList').appendChild(div);
     }
-
     if (loadedData.length > 0) {
         var rows = '';
         for (var j = 0; j < loadedData.length; j++) {
             var d2 = loadedData[j];
-            rows += '<tr><td>' + d2.fileName + '</td><td>' + d2.gate + '</td>' +
-                '<td>' + d2.resumen.totalPersonas + '</td>' +
-                '<td>$' + d2.resumen.totalRecaudado.toLocaleString() + '</td></tr>';
+            rows += '<tr><td>' + d2.fileName + '</td><td>' + d2.gate + '</td><td>' + d2.resumen.totalPersonas + '</td><td>$' + d2.resumen.totalRecaudado.toLocaleString() + '</td></tr>';
         }
         document.getElementById('summaryPreview').innerHTML =
-            '<h3>Vista previa de consolidación</h3>' +
-            '<table><tr><th>Archivo</th><th>Entrada</th><th>Personas</th><th>Recaudado</th></tr>' +
+            '<h3>Vista previa de consolidación</h3><table>' +
+            '<tr><th>Archivo</th><th>Entrada</th><th>Personas</th><th>Recaudado</th></tr>' +
             rows +
-            '<tr style="font-weight:bold;background:#f1f5f9;"><td colspan="2">TOTAL CONSOLIDADO</td>' +
-            '<td>' + totalPersonas + '</td><td>$' + totalMoney.toLocaleString() + '</td></tr></table>';
+            '<tr style="font-weight:bold;background:#f1f5f9;"><td colspan="2">TOTAL CONSOLIDADO</td><td>' + totalPersonas + '</td><td>$' + totalMoney.toLocaleString() + '</td></tr></table>';
         document.getElementById('btnGenerate').disabled = false;
     } else {
         document.getElementById('btnGenerate').disabled = true;
-        if (!consolWarn.length)
-            document.getElementById('errorMsg').textContent = 'No se pudo cargar ningún archivo. Verificá que sean .xls generados por la app.';
+        if (!consolWarn.length) document.getElementById('errorMsg').textContent = 'No se pudo cargar ningún archivo. Verificá que sean .xls generados por la app.';
     }
 }
 
-function removeFile(index) {
-    loadedData.splice(index, 1);
-    renderFileList();
-}
+function removeFile(index) { loadedData.splice(index,1); renderFileList(); }
 
 function generateConsolidatedReport() {
     if (!loadedData.length) return;
-
-    var totalCash = 0, totalTransfer = 0, totalMoney = 0;
-    for (var i = 0; i < loadedData.length; i++) {
-        totalCash     += loadedData[i].resumen.efectivoCant;
-        totalTransfer += loadedData[i].resumen.transferenciaCant;
-        totalMoney    += loadedData[i].resumen.totalRecaudado;
-    }
+    var totalCash=0, totalTransfer=0, totalMoney=0;
+    for (var i=0; i<loadedData.length; i++) { totalCash+=loadedData[i].resumen.efectivoCant; totalTransfer+=loadedData[i].resumen.transferenciaCant; totalMoney+=loadedData[i].resumen.totalRecaudado; }
     var totalPeople = totalCash + totalTransfer;
-
-    var allDetails = [];
-    var globalId = 1;
-    for (var i = 0; i < loadedData.length; i++) {
-        var d = loadedData[i];
-        for (var j = 0; j < d.detalles.length; j++) {
-            var det = d.detalles[j];
-            allDetails.push({
-                id: globalId++,
-                metodo: det.metodo, hora: det.hora, categoria: det.categoria,
-                turno: det.turno, acceso: det.acceso, controlador: det.controlador,
-                archivo: det.archivo || d.fileName, gate: d.gate
-            });
-        }
-    }
-
-    var turnoMap = {}, ctrlMap = {}, accMap = {};
-    for (var k = 0; k < allDetails.length; k++) {
-        var det2  = allDetails[k];
-        var price = det2.metodo.indexOf('Efectivo') >= 0 ? 10000 : 10007;
-        var t = det2.turno      || 'Sin turno';
-        var c = det2.controlador || 'No especificado';
-        var a = det2.acceso     || 'Sin acceso';
-        if (!turnoMap[t]) turnoMap[t] = { cantidad: 0, recaudado: 0 };
-        if (!ctrlMap[c])  ctrlMap[c]  = { cantidad: 0, recaudado: 0 };
-        if (!accMap[a])   accMap[a]   = { cantidad: 0, recaudado: 0 };
-        turnoMap[t].cantidad++; turnoMap[t].recaudado += price;
-        ctrlMap[c].cantidad++;  ctrlMap[c].recaudado  += price;
-        accMap[a].cantidad++;   accMap[a].recaudado   += price;
-    }
-
-    var date = new Date().toLocaleDateString('es-AR', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
-
-    var detRows = '';
-    for (var d = 0; d < allDetails.length; d++) {
-        var det3  = allDetails[d];
-        var isCash = det3.metodo.indexOf('Efectivo') >= 0;
-        detRows += '<tr><td>' + det3.id + '</td>' +
-            '<td><span class="badge ' + (isCash ? 'cash' : 'transfer') + '">' + det3.metodo + '</span></td>' +
-            '<td>' + det3.hora + '</td><td>' + det3.categoria + '</td><td>' + det3.turno + '</td>' +
-            '<td>' + det3.acceso + '</td>' +
-            '<td>' + (det3.controlador === 'No especificado' ? '<span class="badge unsp">No especificado</span>' : det3.controlador) + '</td>' +
-            '<td style="font-size:11px;color:#64748b;">' + det3.archivo + '</td></tr>';
-    }
-
-    var turnoRows = '', ctrlRows = '', accRows = '';
-    for (var tk in turnoMap) { turnoRows += '<tr><td>' + tk + '</td><td>' + turnoMap[tk].cantidad + '</td><td>$' + turnoMap[tk].recaudado.toLocaleString() + '</td></tr>'; }
-    for (var ck in ctrlMap)  { ctrlRows  += '<tr><td>' + (ck === 'No especificado' ? '⚠️ No especificado' : ck) + '</td><td>' + ctrlMap[ck].cantidad + '</td><td>$' + ctrlMap[ck].recaudado.toLocaleString() + '</td></tr>'; }
-    for (var ak in accMap)   { accRows   += '<tr><td>' + ak + '</td><td>' + accMap[ak].cantidad + '</td><td>$' + accMap[ak].recaudado.toLocaleString() + '</td></tr>'; }
-
-    var css2 = 'body{font-family:Segoe UI,Arial,sans-serif;margin:30px;background:#f4f6fb;}' +
-        '.rc{max-width:1200px;margin:auto;background:white;border-radius:24px;padding:30px;box-shadow:0 10px 40px rgba(0,0,0,.1);}' +
-        '.hdr{margin-bottom:24px;border-bottom:3px solid #3b82f6;padding-bottom:16px;}' +
-        '.logo{font-size:24px;font-weight:800;color:#3b82f6;}h2{color:#1e293b;margin:16px 0 8px;}' +
-        'table{width:100%;border-collapse:collapse;margin-bottom:20px;border-radius:12px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.05);}' +
-        'th{background:#3b82f6;color:white;padding:10px;text-align:left;font-size:13px;}' +
-        'td{padding:8px;border-bottom:1px solid #e2e8f0;font-size:13px;}' +
-        '.badge{padding:3px 10px;border-radius:20px;font-weight:bold;font-size:11px;}' +
-        '.cash{background:#d1fae5;color:#065f46;}.transfer{background:#dbeafe;color:#1e40af;}' +
-        '.unsp{background:#fee2e2;color:#991b1b;}' +
-        '.footer{margin-top:28px;text-align:center;color:#94a3b8;font-size:12px;}';
-
-    var html2 = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Reporte Consolidado</title>' +
-        '<style>' + css2 + '</style></head><body><div class="rc">' +
-        '<div class="hdr"><div class="logo">🎫 Torneo 27 Junio – Reporte Consolidado</div>' +
-        '<div style="color:#64748b;">Generado el ' + date + ' · ' + loadedData.length + ' archivos combinados</div></div>' +
-        '<h2>📊 Resumen General</h2>' +
-        '<table><tr><th>Concepto</th><th>Cantidad</th><th>Monto</th></tr>' +
-        '<tr><td>💵 Efectivo</td><td>' + totalCash + '</td><td>$' + (totalCash * 10000).toLocaleString() + '</td></tr>' +
-        '<tr><td>📱 Transferencia</td><td>' + totalTransfer + '</td><td>$' + (totalTransfer * 10007).toLocaleString() + '</td></tr>' +
-        '<tr style="font-weight:bold;background:#f1f5f9;"><td>👥 Total personas</td><td>' + totalPeople + '</td><td></td></tr>' +
-        '<tr style="font-weight:bold;"><td>💰 TOTAL RECAUDADO</td><td></td><td>$' + totalMoney.toLocaleString() + '</td></tr></table>' +
-        '<h2>📋 Detalle Consolidado</h2>' +
-        '<table><tr><th>#</th><th>Método</th><th>Hora</th><th>Categoría</th><th>Turno</th><th>Acceso</th><th>Controlador</th><th>Archivo</th></tr>' +
-        detRows + '</table>' +
-        '<h2>🏷️ Por Turno</h2><table><tr><th>Turno</th><th>Cantidad</th><th>Recaudado</th></tr>' + turnoRows + '</table>' +
-        '<h2>👤 Por Controlador</h2><table><tr><th>Controlador</th><th>Cantidad</th><th>Recaudado</th></tr>' + ctrlRows + '</table>' +
-        '<h2>📍 Por Acceso</h2><table><tr><th>Acceso</th><th>Cantidad</th><th>Recaudado</th></tr>' + accRows + '</table>' +
-        '<div class="footer">Generado automáticamente · Torneo 27 de Junio</div></div></body></html>';
-
-    var blob2 = new Blob([html2], { type: 'application/vnd.ms-excel' });
-    var url2  = URL.createObjectURL(blob2);
-    var a2    = document.createElement('a');
-    a2.href = url2; a2.download = 'Reporte_Consolidado_Torneo_27_Junio.xls';
-    document.body.appendChild(a2); a2.click();
-    document.body.removeChild(a2); URL.revokeObjectURL(url2);
+    var allDetails = []; var globalId = 1;
+    for (var i=0; i<loadedData.length; i++) { var d=loadedData[i]; for (var j=0; j<d.detalles.length; j++) { var det=d.detalles[j]; allDetails.push({ id:globalId++, metodo:det.metodo, hora:det.hora, categoria:det.categoria, turno:det.turno, acceso:det.acceso, controlador:det.controlador, archivo:det.archivo||d.fileName, gate:d.gate }); } }
+    var turnoMap={}, ctrlMap={}, accMap={};
+    for (var k=0; k<allDetails.length; k++) { var det2=allDetails[k]; var price=det2.metodo.indexOf('Efectivo')>=0?10000:10007; var t=det2.turno||'Sin turno'; var c=det2.controlador||'No especificado'; var a=det2.acceso||'Sin acceso'; if (!turnoMap[t]) turnoMap[t]={cantidad:0,recaudado:0}; if (!ctrlMap[c]) ctrlMap[c]={cantidad:0,recaudado:0}; if (!accMap[a]) accMap[a]={cantidad:0,recaudado:0}; turnoMap[t].cantidad++; turnoMap[t].recaudado+=price; ctrlMap[c].cantidad++; ctrlMap[c].recaudado+=price; accMap[a].cantidad++; accMap[a].recaudado+=price; }
+    var date = new Date().toLocaleDateString('es-AR',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+    var detRows='';
+    for (var d=0; d<allDetails.length; d++) { var det3=allDetails[d]; var isCash=det3.metodo.indexOf('Efectivo')>=0; detRows+='<tr><td>'+det3.id+'</td><td><span class="badge '+(isCash?'cash':'transfer')+'">'+det3.metodo+'</span></td><td>'+det3.hora+'</td><td>'+det3.categoria+'</td><td>'+det3.turno+'</td><td>'+det3.acceso+'</td><td>'+(det3.controlador==='No especificado'?'<span class="badge unsp">No especificado</span>':det3.controlador)+'</td><td style="font-size:11px;color:#64748b;">'+det3.archivo+'</td></tr>'; }
+    var turnoRows='',ctrlRows='',accRows='';
+    for (var tk in turnoMap) turnoRows+='<tr><td>'+tk+'</td><td>'+turnoMap[tk].cantidad+'</td><td>$'+turnoMap[tk].recaudado.toLocaleString()+'</td></tr>';
+    for (var ck in ctrlMap)  ctrlRows +='<tr><td>'+(ck==='No especificado'?'⚠️ No especificado':ck)+'</td><td>'+ctrlMap[ck].cantidad+'</td><td>$'+ctrlMap[ck].recaudado.toLocaleString()+'</td></tr>';
+    for (var ak in accMap)   accRows  +='<tr><td>'+ak+'</td><td>'+accMap[ak].cantidad+'</td><td>$'+accMap[ak].recaudado.toLocaleString()+'</td></tr>';
+    var css2='body{font-family:Segoe UI,Arial,sans-serif;margin:30px;background:#f4f6fb;}.rc{max-width:1200px;margin:auto;background:white;border-radius:24px;padding:30px;box-shadow:0 10px 40px rgba(0,0,0,.1);}.hdr{margin-bottom:24px;border-bottom:3px solid #3b82f6;padding-bottom:16px;}.logo{font-size:24px;font-weight:800;color:#3b82f6;}h2{color:#1e293b;margin:16px 0 8px;}table{width:100%;border-collapse:collapse;margin-bottom:20px;border-radius:12px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.05);}th{background:#3b82f6;color:white;padding:10px;text-align:left;font-size:13px;}td{padding:8px;border-bottom:1px solid #e2e8f0;font-size:13px;}.badge{padding:3px 10px;border-radius:20px;font-weight:bold;font-size:11px;}.cash{background:#d1fae5;color:#065f46;}.transfer{background:#dbeafe;color:#1e40af;}.unsp{background:#fee2e2;color:#991b1b;}.footer{margin-top:28px;text-align:center;color:#94a3b8;font-size:12px;}';
+    var html2='<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Reporte Consolidado</title><style>'+css2+'</style></head><body><div class="rc"><div class="hdr"><div class="logo">🎫 Torneo 27 Junio – Reporte Consolidado</div><div style="color:#64748b;">Generado el '+date+' · '+loadedData.length+' archivos combinados</div></div><h2>📊 Resumen General</h2><table><tr><th>Concepto</th><th>Cantidad</th><th>Monto</th></tr><tr><td>💵 Efectivo</td><td>'+totalCash+'</td><td>$'+(totalCash*10000).toLocaleString()+'</td></tr><tr><td>📱 Transferencia</td><td>'+totalTransfer+'</td><td>$'+(totalTransfer*10007).toLocaleString()+'</td></tr><tr style="font-weight:bold;background:#f1f5f9;"><td>👥 Total personas</td><td>'+totalPeople+'</td><td></td></tr><tr style="font-weight:bold;"><td>💰 TOTAL RECAUDADO</td><td></td><td>$'+totalMoney.toLocaleString()+'</td></tr></table><h2>📋 Detalle Consolidado</h2><table><tr><th>#</th><th>Método</th><th>Hora</th><th>Categoría</th><th>Turno</th><th>Acceso</th><th>Controlador</th><th>Archivo</th></tr>'+detRows+'</table><h2>🏷️ Por Turno</h2><table><tr><th>Turno</th><th>Cantidad</th><th>Recaudado</th></tr>'+turnoRows+'</table><h2>👤 Por Controlador</h2><table><tr><th>Controlador</th><th>Cantidad</th><th>Recaudado</th></tr>'+ctrlRows+'</table><h2>📍 Por Acceso</h2><table><tr><th>Acceso</th><th>Cantidad</th><th>Recaudado</th></tr>'+accRows+'</table><div class="footer">Generado automáticamente · Torneo 27 de Junio</div></div></body></html>';
+    var blob2=new Blob([html2],{type:'application/vnd.ms-excel'});
+    var url2=URL.createObjectURL(blob2); var a2=document.createElement('a');
+    a2.href=url2; a2.download='Reporte_Consolidado_Torneo_27_Junio.xls';
+    document.body.appendChild(a2); a2.click(); document.body.removeChild(a2); URL.revokeObjectURL(url2);
 }
 
 /* =====================================================
-   DRAG & DROP
+   DRAG & DROP CONSOLIDADOR
 ===================================================== */
 var dropZone  = document.getElementById('dropZone');
 var fileInput = document.getElementById('fileInput');
-dropZone.addEventListener('dragover',  function(e) { e.preventDefault(); dropZone.classList.add('dragover'); });
-dropZone.addEventListener('dragleave', function()  { dropZone.classList.remove('dragover'); });
-dropZone.addEventListener('drop',      function(e) { e.preventDefault(); dropZone.classList.remove('dragover'); handleFiles(e.dataTransfer.files); });
-fileInput.addEventListener('change',   function()  { handleFiles(fileInput.files); });
+dropZone.addEventListener('dragover',  function(e){e.preventDefault();dropZone.classList.add('dragover');});
+dropZone.addEventListener('dragleave', function(){dropZone.classList.remove('dragover');});
+dropZone.addEventListener('drop',      function(e){e.preventDefault();dropZone.classList.remove('dragover');handleFiles(e.dataTransfer.files);});
+fileInput.addEventListener('change',   function(){handleFiles(fileInput.files);});
 
 /* =====================================================
    RELOJ Y DARK MODE
 ===================================================== */
 function updateClock() {
-    var now = new Date();
-    var h   = String(now.getHours()).padStart(2, '0');
-    var m   = String(now.getMinutes()).padStart(2, '0');
-    var s   = String(now.getSeconds()).padStart(2, '0');
-    document.getElementById('live-clock').textContent = h + ':' + m + ':' + s;
+    var now=new Date();
+    var h=String(now.getHours()).padStart(2,'0');
+    var m=String(now.getMinutes()).padStart(2,'0');
+    var s=String(now.getSeconds()).padStart(2,'0');
+    document.getElementById('live-clock').textContent = h+':'+m+':'+s;
 }
-setInterval(updateClock, 1000);
+setInterval(updateClock,1000);
 updateClock();
 
 function toggleDark() {
     document.body.classList.toggle('dark-mode');
-    localStorage.setItem('darkModeTorneo', document.body.classList.contains('dark-mode') ? '1' : '0');
+    localStorage.setItem('darkModeTorneo', document.body.classList.contains('dark-mode')?'1':'0');
 }
-if (localStorage.getItem('darkModeTorneo') === '1') document.body.classList.add('dark-mode');
+if (localStorage.getItem('darkModeTorneo')==='1') document.body.classList.add('dark-mode');
 
 /* =====================================================
    INIT
