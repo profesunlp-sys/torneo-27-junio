@@ -660,7 +660,7 @@
         alert('Sesión reiniciada');
     }
 
-    // ==================== FUNCIÓN DE DESCARGA ROBUSTA (funciona en PC, Android, iOS) ====================
+    // ==================== FUNCIÓN DE DESCARGA CORREGIDA ====================
     function askDownloadPassword() { 
         openModal('downloadModal'); 
         document.getElementById('downloadPasswordInput').focus(); 
@@ -677,14 +677,13 @@
         appData.reportCount++;
         saveData();
         
-        // Preparar el contenido HTML del reporte
         let totalCash = appData.counts.cash * PRICE_CASH;
         let totalTrans = appData.counts.transfer * PRICE_TRANSFER;
         let rows = '';
         appData.history.forEach(ev => {
             if (ev.type === 'entry') {
                 rows += `<tr>
-                            <td>${ev.id}</td>
+                            <td style="padding:4px">${ev.id}</td>
                             <td>${ev.method === 'cash' ? 'Efectivo' : 'Transferencia'}${ev.anulled ? ' ANULADO' : ''}</td>
                             <td>${ev.time}</td>
                             <td>${ev.category}</td>
@@ -694,7 +693,7 @@
             } else {
                 rows += `<tr style="background:#fff3e0;">
                             <td colspan="6">↩ ANULACIÓN de #${ev.originalId} - ${ev.time}</td>
-                          </tr>`;
+                         </tr>`;
             }
         });
         
@@ -725,9 +724,7 @@
         const filename = `Reporte_${appData.config.gate}_${appData.sessionId}_N${appData.reportCount}.xls`;
         const blob = new Blob([htmlContent], { type: 'application/vnd.ms-excel' });
         
-        // Método universal de descarga
-        // Creamos un enlace temporal, lo agregamos al body, lo "clickeamos" y lo removemos
-        // Pero para evitar bloqueos en móviles, usamos un retraso mínimo y aseguramos que no haya interferencia del modal.
+        // Descarga robusta: esperar un instante para evitar bloqueo del modal
         setTimeout(() => {
             const link = document.createElement('a');
             const url = URL.createObjectURL(blob);
@@ -737,9 +734,7 @@
             link.click();
             document.body.removeChild(link);
             URL.revokeObjectURL(url);
-            
-            // Mostrar modal de éxito (pero esperamos un poco para que la descarga ya esté en marcha)
-            setTimeout(() => openModal('savedModal'), 200);
+            openModal('savedModal');
         }, 100);
     }
 
