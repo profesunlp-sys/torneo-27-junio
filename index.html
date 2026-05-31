@@ -16,29 +16,29 @@
             --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; --subtext: #94a3b8;
             --primary: #60a5fa; --border: #334155; --stat-bg: #0f172a;
         }
-        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); height: 100vh; overflow: hidden; transition: background 0.3s, color 0.3s; }
-        .app-main { display: flex; flex-direction: column; height: 100vh; max-height: 100vh; }
-        .global-nav { flex-shrink: 0; background: var(--card); border-bottom: 2px solid var(--border); padding: 4px 8px; display: flex; align-items: center; justify-content: space-between; gap: 6px; flex-wrap: nowrap; overflow-x: auto; white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+        body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); height: 100vh; overflow: hidden; }
+        .app-main { display: flex; flex-direction: column; height: 100vh; }
+        .global-nav { flex-shrink: 0; background: var(--card); border-bottom: 2px solid var(--border); padding: 4px 8px; display: flex; align-items: center; justify-content: space-between; gap: 6px; flex-wrap: nowrap; overflow-x: auto; }
         .global-nav::-webkit-scrollbar { display: none; }
         .tab-buttons { display: flex; gap: 4px; flex-shrink: 0; }
-        .tab-btn { border: 1.5px solid var(--border); background: var(--stat-bg); color: var(--subtext); border-radius: 40px; padding: 4px 10px; font-weight: 700; font-size: 11px; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+        .tab-btn { border: 1.5px solid var(--border); background: var(--stat-bg); color: var(--subtext); border-radius: 40px; padding: 4px 10px; font-weight: 700; font-size: 11px; cursor: pointer; white-space: nowrap; }
         .tab-btn.active { background: var(--primary); border-color: var(--primary); color: white; }
         .nav-right { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
-        .clock { font-size: 0.7rem; font-weight: 700; background: var(--stat-bg); padding: 3px 8px; border-radius: 40px; border: 1px solid var(--border); letter-spacing: 0.3px; }
-        .icon-btn { background: var(--stat-bg); border: 1px solid var(--border); border-radius: 50%; width: 28px; height: 28px; font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text); flex-shrink: 0; }
-        .tabs-container { flex: 1; overflow: hidden; position: relative; }
+        .clock { font-size: 0.7rem; font-weight: 700; background: var(--stat-bg); padding: 3px 8px; border-radius: 40px; border: 1px solid var(--border); }
+        .icon-btn { background: var(--stat-bg); border: 1px solid var(--border); border-radius: 50%; width: 28px; height: 28px; font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .tabs-container { flex: 1; overflow: hidden; }
         .tab-content { display: none; height: 100%; overflow-y: auto; padding: 10px 12px; }
         .tab-content.active { display: block; }
-        .config-row-three { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); gap: 6px; margin-bottom: 12px; }
+        .config-row-three { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr) minmax(0,1fr); gap: 6px; margin-bottom: 12px; }
         .config-item { background: var(--stat-bg); border: 1.5px solid var(--border); border-radius: 16px; padding: 4px 5px; min-width: 0; }
-        .config-item label { display: flex; flex-direction: column; font-size: 8px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3px; color: var(--primary); gap: 2px; }
-        .config-item select { padding: 3px 2px; border-radius: 10px; border: 1px solid var(--border); background: var(--card); color: var(--text); font-weight: 600; font-size: 10px; width: 100%; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
+        .config-item label { display: flex; flex-direction: column; font-size: 8px; font-weight: 800; text-transform: uppercase; color: var(--primary); gap: 2px; }
+        .config-item select { padding: 3px 2px; border-radius: 10px; border: 1px solid var(--border); background: var(--card); font-weight: 600; font-size: 10px; width: 100%; }
         .turno-wrapper { display: flex; align-items: center; gap: 2px; width: 100%; }
-        .turno-wrapper select { flex: 1; min-width: 0; }
+        .turno-wrapper select { flex: 1; }
         .auto-shift-btn { background: transparent; border: 1px solid var(--primary); border-radius: 30px; padding: 2px 5px; font-size: 9px; font-weight: bold; color: var(--primary); cursor: pointer; flex-shrink: 0; }
-        .last-entry { text-align: center; font-size: 9px; color: var(--subtext); background: var(--stat-bg); padding: 5px; border-radius: 40px; margin-bottom: 12px; }
+        .last-entry { text-align: center; font-size: 9px; background: var(--stat-bg); padding: 5px; border-radius: 40px; margin-bottom: 12px; }
         .buttons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
-        .entry-btn { border: none; border-radius: 24px; padding: 12px 4px; color: white; font-weight: 800; font-size: 13px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: flex; flex-direction: column; align-items: center; gap: 3px; transition: transform 0.1s; }
+        .entry-btn { border: none; border-radius: 24px; padding: 12px 4px; color: white; font-weight: 800; font-size: 13px; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 3px; transition: transform 0.1s; }
         .entry-btn:active { transform: scale(0.96); }
         .cash-btn { background: linear-gradient(135deg, #10b981, #059669); }
         .transfer-btn { background: linear-gradient(135deg, #3b82f6, #2563eb); }
@@ -55,10 +55,14 @@
         .report-lock-badge { text-align: center; font-size: 8px; font-weight: 700; color: var(--warning); background: #fff7ed; border: 1px solid var(--warning); border-radius: 40px; padding: 3px; margin-bottom: 10px; }
         .dark-mode .report-lock-badge { background: #1e293b; }
         .consol-wrapper { display: flex; justify-content: center; align-items: center; min-height: 100%; }
-        .consol-container { background: var(--card); border-radius: 28px; padding: 16px; width: 100%; box-shadow: var(--shadow); }
+        .consol-container { background: var(--card); border-radius: 28px; padding: 16px; width: 100%; max-width: 700px; margin: auto; box-shadow: var(--shadow); }
         .drop-zone { border: 2px dashed var(--primary); border-radius: 20px; padding: 16px; text-align: center; margin-bottom: 14px; font-size: 12px; }
-        .file-item { background: var(--stat-bg); padding: 6px 8px; border-radius: 40px; margin-bottom: 6px; font-size: 11px; display: flex; justify-content: space-between; }
+        .file-item { background: var(--stat-bg); padding: 6px 8px; border-radius: 40px; margin-bottom: 6px; font-size: 11px; display: flex; justify-content: space-between; align-items: center; }
+        .btn-remove { background: var(--danger); color: white; border: none; border-radius: 30px; padding: 0 6px; cursor: pointer; }
         .btn-generate { width: 100%; background: var(--primary); border: none; border-radius: 40px; padding: 10px; font-weight: bold; color: white; font-size: 12px; cursor: pointer; }
+        .resumen-consolidado { overflow-x: auto; margin-top: 12px; font-size: 11px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid var(--border); padding: 5px; text-align: left; }
         .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: center; }
         .modal.active { display: flex; }
         .modal-content { background: var(--card); border-radius: 28px; padding: 20px; max-width: 280px; width: 85%; text-align: center; }
@@ -89,44 +93,15 @@
             <button class="icon-btn" onclick="showHelp()">❓</button>
         </div>
     </nav>
-
     <div class="tabs-container">
+        <!-- TAB CONTROL (entradas) -->
         <div id="tab-control" class="tab-content active">
-            <div class="control-wrapper" style="display:flex; justify-content:center;">
+            <div style="display:flex; justify-content:center;">
                 <div style="width:100%; max-width:480px;">
                     <div class="config-row-three">
-                        <div class="config-item">
-                            <label>📍 Acceso
-                                <select id="gate-select" onchange="saveConfig()">
-                                    <option>Entrada 1</option>
-                                    <option>Entrada 2</option>
-                                    <option>Entrada 3</option>
-                                </select>
-                            </label>
-                        </div>
-                        <div class="config-item">
-                            <label>🕒 Turno
-                                <div class="turno-wrapper">
-                                    <select id="shift-select" onchange="saveConfig(); userManuallyChangedShift()">
-                                        <option>08:30 - 11:30 | USAG 2</option>
-                                        <option>11:45 - 13:15 | USAG 1 A</option>
-                                        <option>13:30 - 14:30 | PULGAS</option>
-                                        <option>14:45 - 16:00 | E2 Y E3</option>
-                                        <option>16:15 - 17:45 | E1 A</option>
-                                        <option>18:00 - 20:30 | E1 B / USAG 1 B</option>
-                                    </select>
-                                    <button class="auto-shift-btn" onclick="applyAutoShift()" title="Actualizar según hora actual">⏰</button>
-                                </div>
-                            </label>
-                        </div>
-                        <div class="config-item">
-                            <label>👤 Controlador
-                                <select id="controller-select" onchange="saveConfig()">
-                                    <option>Maylén</option><option>Lola</option><option>Sabrina</option>
-                                    <option>Lucía</option><option>Milagros</option><option>Catalina</option><option>Jose Ma.</option>
-                                </select>
-                            </label>
-                        </div>
+                        <div class="config-item"><label>📍 Acceso<select id="gate-select" onchange="saveConfig()"><option>Entrada 1</option><option>Entrada 2</option><option>Entrada 3</option></select></label></div>
+                        <div class="config-item"><label>🕒 Turno<div class="turno-wrapper"><select id="shift-select" onchange="saveConfig(); userManuallyChangedShift()"><option>08:30 - 11:30 | USAG 2</option><option>11:45 - 13:15 | USAG 1 A</option><option>13:30 - 14:30 | PULGAS</option><option>14:45 - 16:00 | E2 Y E3</option><option>16:15 - 17:45 | E1 A</option><option>18:00 - 20:30 | E1 B / USAG 1 B</option></select><button class="auto-shift-btn" onclick="applyAutoShift()">⏰</button></div></label></div>
+                        <div class="config-item"><label>👤 Controlador<select id="controller-select" onchange="saveConfig()"><option>Maylén</option><option>Lola</option><option>Sabrina</option><option>Lucía</option><option>Milagros</option><option>Catalina</option><option>Jose Ma.</option></select></label></div>
                     </div>
                     <div class="last-entry" id="last-entry-text">📌 Último registro: —</div>
                     <div class="buttons-grid">
@@ -149,22 +124,19 @@
                 </div>
             </div>
         </div>
-
-        <!-- TAB CONSOLIDADOR ORIGINAL -->
+        <!-- TAB CONSOLIDADOR (REPARADO) -->
         <div id="tab-consol" class="tab-content">
             <div class="consol-wrapper">
                 <div class="consol-container">
-                    <h4 style="color:var(--primary);margin-bottom:8px;">📊 Consolidador</h4>
+                    <h4 style="color:var(--primary);margin-bottom:8px;">📊 Consolidador de Reportes</h4>
                     <div class="drop-zone" id="dropZone">
-                        <p style="font-size:12px;">📂 Arrastrá archivos .xls</p>
-                        <label style="background:var(--primary);color:white;padding:4px 12px;border-radius:40px;display:inline-block;margin-top:6px;cursor:pointer;font-size:11px;">Seleccionar
-                            <input type="file" id="fileInput" multiple accept=".xls,.xlsx" style="display:none;">
-                        </label>
+                        <p style="font-size:12px;">📂 Arrastrá archivos .xls (reportes generados por la app)</p>
+                        <label style="background:var(--primary);color:white;padding:4px 12px;border-radius:40px;display:inline-block;margin-top:6px;cursor:pointer;">Seleccionar archivos<input type="file" id="fileInput" multiple accept=".xls,.xlsx" style="display:none;"></label>
                     </div>
                     <div id="fileList"></div>
-                    <div id="summaryPreview"></div>
-                    <button class="btn-generate" id="btnGenerate" disabled onclick="generateConsolidatedReport()">📎 Generar Consolidado</button>
-                    <div id="warningMsg" style="font-size:10px;color:var(--warning);margin-top:6px;"></div>
+                    <div id="preview" class="resumen-consolidado"></div>
+                    <button class="btn-generate" id="btnGenerate" disabled onclick="generarConsolidado()">📎 Generar Reporte Consolidado</button>
+                    <div id="consolWarning" style="font-size:10px;color:var(--warning);margin-top:8px;"></div>
                 </div>
             </div>
         </div>
@@ -172,78 +144,27 @@
 </div>
 
 <!-- MODALES -->
-<div class="modal" id="downloadModal">
-    <div class="modal-content">
-        <h4>🔒 Descargar</h4>
-        <input type="password" id="downloadPasswordInput" placeholder="Clave DESCARGA">
-        <div class="modal-buttons">
-            <button class="btn-cancel" onclick="closeModal('downloadModal')">Cancelar</button>
-            <button class="btn-safe" onclick="confirmDownload()">Continuar</button>
-        </div>
-    </div>
-</div>
-
-<!-- Modal de opciones de reporte (NUEVO, CORREGIDO) -->
-<div class="modal" id="reporteModal">
-    <div class="modal-content" style="max-width:320px;width:92%;">
-        <h4>📋 Reporte listo</h4>
-        <p style="font-size:11px;color:var(--subtext);margin-bottom:4px;">Elegí cómo guardar el reporte:</p>
-        <div class="reporte-acciones">
-            <button style="background:linear-gradient(135deg,#8b5cf6,#6366f1);color:white;" onclick="descargarReporte()">📥 Guardar archivo</button>
-            <button style="background:var(--success);color:white;" onclick="copiarReporte()">📋 Copiar texto</button>
-            <button style="background:#25D366;color:white;" onclick="compartirWA()">💬 Enviar por WhatsApp</button>
-            <button style="background:#94a3b8;color:white;" onclick="closeModal('reporteModal')">Cerrar</button>
-        </div>
-    </div>
-</div>
-
-<div class="modal" id="undoAfterReportModal">
-    <div class="modal-content">
-        <h4>⚠️ Anulación post-reporte</h4>
-        <div class="modal-warning-box">Requiere clave supervisor (DESCARGA)</div>
-        <input type="password" id="undoAfterReportInput" placeholder="Clave">
-        <div class="modal-buttons">
-            <button class="btn-cancel" onclick="closeModal('undoAfterReportModal')">Cancelar</button>
-            <button class="btn-confirm" onclick="confirmUndoAfterReport()">Autorizar</button>
-        </div>
-    </div>
-</div>
-<div class="modal" id="sharedModal"><div class="modal-content"><h4>✅ Listo</h4><button class="btn-ok" onclick="closeModal('sharedModal')">Cerrar</button></div></div>
+<div class="modal" id="downloadModal"><div class="modal-content"><h4>🔒 Descargar</h4><input type="password" id="downloadPasswordInput" placeholder="Clave DESCARGA"><div class="modal-buttons"><button class="btn-cancel" onclick="closeModal('downloadModal')">Cancelar</button><button class="btn-safe" onclick="confirmDownload()">Continuar</button></div></div></div>
+<div class="modal" id="reporteModal"><div class="modal-content" style="max-width:320px;"><h4>📋 Reporte listo</h4><p style="font-size:11px;">Elegí cómo guardar el reporte:</p><div class="reporte-acciones"><button style="background:linear-gradient(135deg,#8b5cf6,#6366f1);color:white;" onclick="descargarReporte()">📥 Guardar archivo</button><button style="background:var(--success);color:white;" onclick="copiarReporte()">📋 Copiar texto</button><button style="background:#25D366;color:white;" onclick="compartirWA()">💬 Enviar por WhatsApp</button><button style="background:#94a3b8;color:white;" onclick="closeModal('reporteModal')">Cerrar</button></div></div></div>
+<div class="modal" id="undoAfterReportModal"><div class="modal-content"><h4>⚠️ Anulación post-reporte</h4><div class="modal-warning-box">Requiere clave supervisor (DESCARGA)</div><input type="password" id="undoAfterReportInput" placeholder="Clave"><div class="modal-buttons"><button class="btn-cancel" onclick="closeModal('undoAfterReportModal')">Cancelar</button><button class="btn-confirm" onclick="confirmUndoAfterReport()">Autorizar</button></div></div></div>
 <div class="modal" id="savedModal"><div class="modal-content"><h4>✅ Reporte guardado</h4><p style="font-size:11px;">Revisá tu carpeta de Descargas.</p><button class="btn-ok" onclick="closeModal('savedModal')">OK</button></div></div>
-<div class="modal" id="helpModal">
-    <div class="modal-content">
-        <h4>📘 Ayuda</h4>
-        <p style="font-size:11px;text-align:left;line-height:1.6;">Turno auto-según hora. Botón ⏰ actualiza. Deshacer libre antes del 1er reporte, luego clave DESCARGA. Reiniciar: REINICIA.</p>
-        <button class="btn-ok" onclick="closeModal('helpModal')">Entendido</button>
-    </div>
-</div>
-<div class="modal" id="passwordModal">
-    <div class="modal-content">
-        <h4>🔒 Reiniciar</h4>
-        <input type="password" id="resetPasswordInput" placeholder="Clave REINICIA">
-        <div class="modal-buttons">
-            <button class="btn-cancel" onclick="closeModal('passwordModal')">Cancelar</button>
-            <button class="btn-confirm" onclick="confirmReset()">Reiniciar</button>
-        </div>
-    </div>
-</div>
+<div class="modal" id="helpModal"><div class="modal-content"><h4>📘 Ayuda</h4><p style="font-size:11px;">Turno automático según hora. Botón ⏰ actualiza. Deshacer libre antes del 1er reporte, luego clave DESCARGA. Reiniciar: REINICIA.</p><button class="btn-ok" onclick="closeModal('helpModal')">Entendido</button></div></div>
+<div class="modal" id="passwordModal"><div class="modal-content"><h4>🔒 Reiniciar</h4><input type="password" id="resetPasswordInput" placeholder="Clave REINICIA"><div class="modal-buttons"><button class="btn-cancel" onclick="closeModal('passwordModal')">Cancelar</button><button class="btn-confirm" onclick="confirmReset()">Reiniciar</button></div></div></div>
 
 <script>
-    // ==================== CONSTANTES ====================
+    // ==================== CONSTANTES Y DATOS ====================
     const PASS_SUPERVISOR = 'DESCARGA';
     const PASS_RESET = 'REINICIA';
     const PRICE_CASH = 10000;
     const PRICE_TRANSFER = 10007;
-
     const SHIFT_RANGES = [
-        { start: 8*60+30,  end: 11*60+30, shift: "08:30 - 11:30 | USAG 2" },
+        { start: 8*60+30, end: 11*60+30, shift: "08:30 - 11:30 | USAG 2" },
         { start: 11*60+45, end: 13*60+15, shift: "11:45 - 13:15 | USAG 1 A" },
         { start: 13*60+30, end: 14*60+30, shift: "13:30 - 14:30 | PULGAS" },
-        { start: 14*60+45, end: 16*60+0,  shift: "14:45 - 16:00 | E2 Y E3" },
+        { start: 14*60+45, end: 16*60+0, shift: "14:45 - 16:00 | E2 Y E3" },
         { start: 16*60+15, end: 17*60+45, shift: "16:15 - 17:45 | E1 A" },
-        { start: 18*60+0,  end: 20*60+30, shift: "18:00 - 20:30 | E1 B / USAG 1 B" }
+        { start: 18*60+0, end: 20*60+30, shift: "18:00 - 20:30 | E1 B / USAG 1 B" }
     ];
-
     let appData = JSON.parse(localStorage.getItem('torneoJunioData')) || {
         sessionId: 'SES-' + Date.now().toString(36).toUpperCase(),
         config: { gate: 'Entrada 1', shift: '', controller: 'Maylén' },
@@ -257,29 +178,14 @@
     if (appData.autoShiftEnabled === undefined) appData.autoShiftEnabled = true;
 
     function getShiftByTime() {
-        let now = new Date();
-        let mins = now.getHours() * 60 + now.getMinutes();
-        for (let r of SHIFT_RANGES) {
-            if (mins >= r.start && mins <= r.end) return r.shift;
-        }
+        let mins = new Date().getHours()*60 + new Date().getMinutes();
+        for (let r of SHIFT_RANGES) if (mins >= r.start && mins <= r.end) return r.shift;
         return appData.config.shift || SHIFT_RANGES[0].shift;
     }
-    function applyAutoShift() {
-        let auto = getShiftByTime();
-        if (auto) {
-            appData.config.shift = auto;
-            document.getElementById('shift-select').value = auto;
-            appData.autoShiftEnabled = true;
-            saveData();
-            let btn = document.querySelector('.auto-shift-btn');
-            btn.style.transform = 'scale(0.9)';
-            setTimeout(() => btn.style.transform = '', 150);
-        }
-    }
+    function applyAutoShift() { let a = getShiftByTime(); if (a) { appData.config.shift = a; document.getElementById('shift-select').value = a; appData.autoShiftEnabled = true; saveData(); } }
     function userManuallyChangedShift() { appData.autoShiftEnabled = false; }
     function saveData() { localStorage.setItem('torneoJunioData', JSON.stringify(appData)); updateUI(); }
     function nowTime() { return new Date().toLocaleTimeString('es-AR'); }
-
     function updateUI() {
         document.getElementById('gate-select').value = appData.config.gate;
         document.getElementById('shift-select').value = appData.config.shift;
@@ -297,52 +203,29 @@
         document.getElementById('btn-undo').disabled = !hasUndoable;
         document.getElementById('report-lock-badge').style.display = appData.reportDownloaded ? 'block' : 'none';
         let last = [...appData.history].reverse().find(h => h.type === 'entry' || h.type === 'anulacion');
-        if (last) document.getElementById('last-entry-text').innerHTML = last.type === 'entry'
-            ? `✅ ${last.method === 'cash' ? 'Efectivo' : 'Transferencia'} ${last.time}`
-            : `↩ Anulación ${last.time}`;
-    }
-    function saveConfig() {
-        appData.config.gate = document.getElementById('gate-select').value;
-        appData.config.shift = document.getElementById('shift-select').value;
-        appData.config.controller = document.getElementById('controller-select').value;
+        if (last) document.getElementById('last-entry-text').innerHTML = last.type === 'entry' ? `✅ ${last.method === 'cash' ? 'Efectivo' : 'Transferencia'} ${last.time}` : `↩ Anulación ${last.time}`;
         saveData();
     }
-
+    function saveConfig() { appData.config.gate = document.getElementById('gate-select').value; appData.config.shift = document.getElementById('shift-select').value; appData.config.controller = document.getElementById('controller-select').value; saveData(); }
     let lastTap = 0;
     function register(method) {
         if (Date.now() - lastTap < 300) return;
         lastTap = Date.now();
-        if (method === 'cash') appData.counts.cash++;
-        else appData.counts.transfer++;
-        appData.history.push({
-            id: appData.history.length + 1, type: 'entry', method, time: nowTime(),
-            category: appData.config.shift.split('|')[1]?.trim() || appData.config.shift,
-            shift: appData.config.shift, gate: appData.config.gate, controller: appData.config.controller, anulled: false
-        });
-        saveData(); updateUI();
-        let el = document.getElementById('count-total');
-        el.classList.add('pulse');
-        setTimeout(() => el.classList.remove('pulse'), 300);
+        if (method === 'cash') appData.counts.cash++; else appData.counts.transfer++;
+        appData.history.push({ id: appData.history.length+1, type: 'entry', method, time: nowTime(), category: (appData.config.shift.split('|')[1] || appData.config.shift).trim(), shift: appData.config.shift, gate: appData.config.gate, controller: appData.config.controller, anulled: false });
+        updateUI();
+        let el = document.getElementById('count-total'); el.classList.add('pulse'); setTimeout(() => el.classList.remove('pulse'), 300);
         if (navigator.vibrate) navigator.vibrate(30);
     }
-
-    function handleUndoClick() {
-        if (appData.reportDownloaded) { openModal('undoAfterReportModal'); document.getElementById('undoAfterReportInput').focus(); }
-        else undoLast(false);
-    }
-    function confirmUndoAfterReport() {
-        if (document.getElementById('undoAfterReportInput').value !== PASS_SUPERVISOR) { alert('Clave incorrecta'); return; }
-        closeModal('undoAfterReportModal'); undoLast(true);
-    }
+    function handleUndoClick() { if (appData.reportDownloaded) { openModal('undoAfterReportModal'); document.getElementById('undoAfterReportInput').focus(); } else undoLast(false); }
+    function confirmUndoAfterReport() { if (document.getElementById('undoAfterReportInput').value !== PASS_SUPERVISOR) { alert('Clave incorrecta'); return; } closeModal('undoAfterReportModal'); undoLast(true); }
     function undoLast(isPost) {
-        for (let i = appData.history.length - 1; i >= 0; i--) {
+        for (let i = appData.history.length-1; i>=0; i--) {
             if (appData.history[i].type === 'entry' && !appData.history[i].anulled) {
-                let entry = appData.history[i];
-                entry.anulled = true;
-                if (entry.method === 'cash') appData.counts.cash--;
-                else appData.counts.transfer--;
-                appData.history.push({ id: appData.history.length + 1, type: 'anulacion', originalId: entry.id, originalMethod: entry.method, time: nowTime(), gate: appData.config.gate, controller: appData.config.controller, postReport: isPost });
-                saveData(); updateUI(); break;
+                let entry = appData.history[i]; entry.anulled = true;
+                if (entry.method === 'cash') appData.counts.cash--; else appData.counts.transfer--;
+                appData.history.push({ id: appData.history.length+1, type: 'anulacion', originalId: entry.id, originalMethod: entry.method, time: nowTime(), gate: appData.config.gate, controller: appData.config.controller, postReport: isPost });
+                updateUI(); break;
             }
         }
     }
@@ -353,150 +236,118 @@
         let resetLog = JSON.parse(localStorage.getItem('torneoResetLog') || '[]');
         resetLog.push({ fecha: new Date().toLocaleString(), sessionId: appData.sessionId, controller: appData.config.controller });
         localStorage.setItem('torneoResetLog', JSON.stringify(resetLog));
-        appData.counts = { cash: 0, transfer: 0 };
-        appData.history = [];
-        appData.reportDownloaded = false;
-        appData.sessionId = 'SES-' + Date.now().toString(36).toUpperCase();
-        appData.autoShiftEnabled = true;
-        appData.config.shift = getShiftByTime();
-        saveData(); updateUI();
-        alert('Sesión reiniciada');
+        appData.counts = { cash:0, transfer:0 }; appData.history = []; appData.reportDownloaded = false;
+        appData.sessionId = 'SES-' + Date.now().toString(36).toUpperCase(); appData.autoShiftEnabled = true; appData.config.shift = getShiftByTime();
+        updateUI(); alert('Sesión reiniciada');
     }
 
-    // ==================== DESCARGA CORREGIDA (CON MODAL DE OPCIONES) ====================
-    let _reporteHTML = '';
-    let _reporteTexto = '';
-
-    function askDownloadPassword() {
-        document.getElementById('downloadPasswordInput').value = '';
-        openModal('downloadModal');
-    }
-
+    // ==================== DESCARGA DE REPORTE (CORREGIDA) ====================
+    let _reporteHTML = '', _reporteTexto = '';
+    function askDownloadPassword() { document.getElementById('downloadPasswordInput').value = ''; openModal('downloadModal'); }
     function confirmDownload() {
-        if (document.getElementById('downloadPasswordInput').value !== PASS_SUPERVISOR) {
-            alert('Clave incorrecta'); return;
-        }
+        if (document.getElementById('downloadPasswordInput').value !== PASS_SUPERVISOR) { alert('Clave incorrecta'); return; }
         closeModal('downloadModal');
-
-        appData.reportDownloaded = true;
-        appData.reportCount++;
-        saveData();
-
-        let totalCash = appData.counts.cash * PRICE_CASH;
-        let totalTrans = appData.counts.transfer * PRICE_TRANSFER;
+        appData.reportDownloaded = true; appData.reportCount++; saveData();
+        let totalCash = appData.counts.cash * PRICE_CASH, totalTrans = appData.counts.transfer * PRICE_TRANSFER;
         let rows = '';
         appData.history.forEach(ev => {
-            if (ev.type === 'entry') {
-                rows += `<tr>
-                    <td style="padding:4px">${ev.id}</td>
-                    <td>${ev.method === 'cash' ? 'Efectivo' : 'Transferencia'}${ev.anulled ? ' ANULADO' : ''}</td>
-                    <td>${ev.time}</td>
-                    <td>${ev.category}</td>
-                    <td>${ev.gate}</td>
-                    <td>${ev.controller}</td>
-                 </tr>`;
-            } else {
-                rows += `<tr style="background:#fff3e0;"><td colspan="6">↩ ANULACIÓN de #${ev.originalId} - ${ev.time}</td></tr>`;
-            }
+            if (ev.type === 'entry') rows += `<tr><td>${ev.id}</td><td>${ev.method === 'cash' ? 'Efectivo' : 'Transferencia'}${ev.anulled ? ' ANULADO' : ''}</td><td>${ev.time}</td><td>${ev.category}</td><td>${ev.gate}</td><td>${ev.controller}</td></tr>`;
+            else rows += `<tr style="background:#fff3e0;"><td colspan="6">↩ ANULACIÓN de #${ev.originalId} - ${ev.time}</td></tr>`;
         });
-
-        _reporteHTML = `<!DOCTYPE html>
-<html><head><meta charset="UTF-8"><title>Reporte</title>
-<style>
-    body{font-family:sans-serif;padding:20px;}
-    table{border-collapse:collapse;width:100%}
-    th,td{border:1px solid #ccc;padding:6px;font-size:12px;}
-    th{background:#3b82f6;color:white;}
-</style>
-</head><body>
-<h3>Reporte Torneo 27 Junio</h3>
-<p>Acceso: ${appData.config.gate} | Controlador: ${appData.config.controller}</p>
-<p>Efectivo: ${appData.counts.cash} | Transferencia: ${appData.counts.transfer}</p>
-<p><strong>Total: $${(totalCash+totalTrans).toLocaleString('es-AR')}</strong></p>
-<h4>Detalle</h4>
-<table border="1">
-    <tr><th>ID</th><th>Método</th><th>Hora</th><th>Categoría</th><th>Acceso</th><th>Controlador</th></tr>
-    ${rows}
-</table>
-<p><small>Generado: ${new Date().toLocaleString('es-AR')}</small></p>
-</body></html>`;
-
-        _reporteTexto =
-`REPORTE TORNEO 27 JUNIO
-Acceso: ${appData.config.gate} | Controlador: ${appData.config.controller}
-Efectivo: ${appData.counts.cash} personas → $${totalCash.toLocaleString('es-AR')}
-Transferencia: ${appData.counts.transfer} personas → $${totalTrans.toLocaleString('es-AR')}
-TOTAL: $${(totalCash+totalTrans).toLocaleString('es-AR')}
-Generado: ${new Date().toLocaleString('es-AR')}`;
-
+        _reporteHTML = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Reporte Torneo</title><style>body{font-family:sans-serif;padding:20px;}table{border-collapse:collapse;width:100%}th,td{border:1px solid #ccc;padding:6px;font-size:12px;}th{background:#3b82f6;color:white;}</style></head><body><h3>Reporte Torneo 27 Junio</h3><p>Acceso: ${appData.config.gate} | Controlador: ${appData.config.controller}</p><p>Efectivo: ${appData.counts.cash} | Transferencia: ${appData.counts.transfer}</p><p><strong>Total: $${(totalCash+totalTrans).toLocaleString('es-AR')}</strong></p><h4>Detalle</h4><tr><th>ID</th><th>Método</th><th>Hora</th><th>Categoría</th><th>Acceso</th><th>Controlador</th> </tr>${rows}</table><p><small>Generado: ${new Date().toLocaleString('es-AR')}</small></p></body></html>`;
+        _reporteTexto = `REPORTE TORNEO 27 JUNIO\nAcceso: ${appData.config.gate} | Controlador: ${appData.config.controller}\nEfectivo: ${appData.counts.cash} → $${totalCash.toLocaleString('es-AR')}\nTransferencia: ${appData.counts.transfer} → $${totalTrans.toLocaleString('es-AR')}\nTOTAL: $${(totalCash+totalTrans).toLocaleString('es-AR')}\nGenerado: ${new Date().toLocaleString('es-AR')}`;
         openModal('reporteModal');
     }
-
     function descargarReporte() {
         const filename = `Reporte_${appData.config.gate.replace(/\s/g,'_')}_${appData.sessionId}.xls`;
         try {
             const a = document.createElement('a');
             a.href = 'data:application/vnd.ms-excel;charset=utf-8,' + encodeURIComponent(_reporteHTML);
-            a.download = filename;
-            a.style.display = 'none';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            closeModal('reporteModal');
-            setTimeout(() => openModal('savedModal'), 400);
-        } catch(e) {
-            // Fallback: abrir en nueva pestaña
-            const w = window.open('', '_blank');
-            if (w) { w.document.write(_reporteHTML); w.document.close(); }
-        }
+            a.download = filename; a.style.display = 'none';
+            document.body.appendChild(a); a.click(); document.body.removeChild(a);
+            closeModal('reporteModal'); setTimeout(() => openModal('savedModal'), 400);
+        } catch(e) { const w = window.open('', '_blank'); if (w) { w.document.write(_reporteHTML); w.document.close(); } }
     }
-
     function copiarReporte() {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(_reporteTexto)
-                .then(() => { alert('✅ Reporte copiado'); closeModal('reporteModal'); })
-                .catch(() => _copiarFallback());
-        } else { _copiarFallback(); }
+        if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(_reporteTexto).then(() => { alert('✅ Copiado'); closeModal('reporteModal'); }).catch(() => _copiarFallback()); }
+        else _copiarFallback();
     }
-    function _copiarFallback() {
-        const ta = document.createElement('textarea');
-        ta.value = _reporteTexto;
-        ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0;';
-        document.body.appendChild(ta);
-        ta.select();
-        try { document.execCommand('copy'); alert('✅ Reporte copiado'); closeModal('reporteModal'); } catch(e) { alert('No se pudo copiar automáticamente.'); }
-        document.body.removeChild(ta);
-    }
-    function compartirWA() {
-        window.open('https://wa.me/?text=' + encodeURIComponent(_reporteTexto), '_blank');
-    }
+    function _copiarFallback() { const ta = document.createElement('textarea'); ta.value = _reporteTexto; ta.style.cssText = 'position:fixed;opacity:0;top:0;left:0;'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); alert('✅ Copiado'); closeModal('reporteModal'); } catch(e) { alert('No se pudo copiar'); } document.body.removeChild(ta); }
+    function compartirWA() { window.open('https://wa.me/?text=' + encodeURIComponent(_reporteTexto), '_blank'); }
 
-    // ==================== CONSOLIDADOR ORIGINAL ====================
-    let loadedFiles = [];
+    // ==================== CONSOLIDADOR REAL (REPARADO) ====================
+    let archivosCargados = [];
     function handleFiles(files) {
-        loadedFiles = Array.from(files);
-        document.getElementById('fileList').innerHTML = loadedFiles.map((f, idx) => `
-            <div class="file-item">
-                📄 ${f.name}
-                <button class="btn-remove" onclick="removeFile(${idx})" style="background:var(--danger);color:white;border:none;border-radius:30px;padding:0 6px;">✕</button>
-            </div>
-        `).join('');
-        document.getElementById('btnGenerate').disabled = loadedFiles.length === 0;
-        const summaryDiv = document.getElementById('summaryPreview');
-        if (loadedFiles.length) summaryDiv.innerHTML = '<p style="font-size:11px;">✅ Archivos listos para consolidar</p>';
-        else summaryDiv.innerHTML = '';
+        archivosCargados = Array.from(files);
+        const contenedor = document.getElementById('fileList');
+        contenedor.innerHTML = archivosCargados.map((f, i) => `<div class="file-item">📄 ${f.name}<button class="btn-remove" onclick="removeFile(${i})">✕</button></div>`).join('');
+        document.getElementById('btnGenerate').disabled = archivosCargados.length === 0;
+        document.getElementById('preview').innerHTML = archivosCargados.length ? '<p style="font-size:11px;">✅ Archivos listos. Presioná "Generar Consolidado".</p>' : '';
+        document.getElementById('consolWarning').innerHTML = '';
     }
-    function removeFile(idx) { loadedFiles.splice(idx, 1); handleFiles(loadedFiles); }
-    function generateConsolidatedReport() {
-        if (loadedFiles.length === 0) return;
-        alert('Simulación: Consolidado generado. En producción procesaría los .xls reales.');
-        let blob = new Blob(['Reporte consolidado'], { type: 'text/plain' });
-        let a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        a.download = 'Consolidado_Torneo.xls';
-        a.click();
-        URL.revokeObjectURL(a.href);
+    function removeFile(idx) { archivosCargados.splice(idx,1); handleFiles(archivosCargados); }
+    async function generarConsolidado() {
+        if (archivosCargados.length === 0) return;
+        document.getElementById('btnGenerate').disabled = true;
+        document.getElementById('consolWarning').innerHTML = '<span style="color:var(--primary);">⏳ Procesando archivos...</span>';
+        let datos = [];
+        let errores = [];
+        for (let file of archivosCargados) {
+            try {
+                const texto = await file.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(texto, 'text/html');
+                // Extraer resumen (cantidades)
+                const efectivoSpan = Array.from(doc.querySelectorAll('p, div')).find(el => el.textContent.includes('Efectivo:'));
+                const transferSpan = Array.from(doc.querySelectorAll('p, div')).find(el => el.textContent.includes('Transferencia:'));
+                let efectivo = 0, transfer = 0;
+                if (efectivoSpan) efectivo = parseInt(efectivoSpan.textContent.match(/\d+/)?.[0] || '0');
+                if (transferSpan) transfer = parseInt(transferSpan.textContent.match(/\d+/)?.[0] || '0');
+                // Extraer acceso del reporte (de la línea "Acceso: ...")
+                const accesoMatch = texto.match(/Acceso:\s*([^\|]+)/i);
+                const acceso = accesoMatch ? accesoMatch[1].trim() : 'Desconocido';
+                // Extraer tabla de detalles
+                const tabla = doc.querySelector('table');
+                let filas = [];
+                if (tabla) {
+                    const trs = tabla.querySelectorAll('tr');
+                    for (let i = 1; i < trs.length; i++) { // saltar cabecera
+                        const celdas = trs[i].querySelectorAll('td');
+                        if (celdas.length >= 6) {
+                            filas.push({
+                                id: celdas[0].textContent.trim(),
+                                metodo: celdas[1].textContent.trim(),
+                                hora: celdas[2].textContent.trim(),
+                                categoria: celdas[3].textContent.trim(),
+                                acceso: celdas[4].textContent.trim(),
+                                controlador: celdas[5].textContent.trim()
+                            });
+                        }
+                    }
+                }
+                datos.push({ nombre: file.name, acceso, efectivo, transfer, filas });
+            } catch(e) { errores.push(`${file.name}: ${e.message}`); }
+        }
+        if (errores.length) document.getElementById('consolWarning').innerHTML = `<span style="color:var(--danger);">⚠️ Error en: ${errores.join(', ')}</span>`;
+        else document.getElementById('consolWarning').innerHTML = '';
+        // Mostrar previsualización y generar consolidado
+        let totalEfectivo = 0, totalTransfer = 0, totalPersonas = 0, totalRecaudado = 0;
+        datos.forEach(d => { totalEfectivo += d.efectivo; totalTransfer += d.transfer; totalPersonas += d.efectivo + d.transfer; totalRecaudado += (d.efectivo * PRICE_CASH) + (d.transfer * PRICE_TRANSFER); });
+        let previewHTML = `<h5 style="margin:10px 0 5px;">📊 Vista previa consolidada</h5><table><tr><th>Archivo</th><th>Acceso</th><th>Efectivo</th><th>Transferencia</th><th>Total $</th></tr>`;
+        datos.forEach(d => previewHTML += `<tr><td>${d.nombre}</td><td>${d.acceso}</td><td>${d.efectivo}</td><td>${d.transfer}</td><td>$${((d.efectivo*PRICE_CASH)+(d.transfer*PRICE_TRANSFER)).toLocaleString('es-AR')}</td></tr>`);
+        previewHTML += `<tr style="font-weight:bold;background:var(--stat-bg);"><td colspan="2">TOTAL</td><td>${totalEfectivo}</td><td>${totalTransfer}</td><td>$${totalRecaudado.toLocaleString('es-AR')}</td></tr></table>`;
+        document.getElementById('preview').innerHTML = previewHTML;
+        // Generar archivo consolidado (Excel)
+        let allRows = '';
+        datos.forEach(d => { d.filas.forEach(f => { allRows += `<tr><td>${f.id}</td><td>${f.metodo}</td><td>${f.hora}</td><td>${f.categoria}</td><td>${f.acceso}</td><td>${f.controlador}</td></tr>`; }); });
+        const consolidadoHTML = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Consolidado Torneo</title><style>body{font-family:sans-serif;padding:20px;}table{border-collapse:collapse;width:100%}th,td{border:1px solid #ccc;padding:6px;}</style></head><body><h3>Reporte Consolidado - Torneo 27 Junio</h3><p>Total Efectivo: ${totalEfectivo} | Total Transferencia: ${totalTransfer}</p><p><strong>Recaudado total: $${totalRecaudado.toLocaleString('es-AR')}</strong></p><h4>Detalle de todas las entradas</h4><table><th>ID</th><th>Método</th><th>Hora</th><th>Categoría</th><th>Acceso</th><th>Controlador</th></tr>${allRows}</table><p><small>Generado: ${new Date().toLocaleString('es-AR')}</small></p></body></html>`;
+        const blob = new Blob([consolidadoHTML], { type: 'application/vnd.ms-excel' });
+        const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `Consolidado_Torneo_${new Date().toISOString().slice(0,19)}.xls`; a.click(); URL.revokeObjectURL(a.href);
+        document.getElementById('btnGenerate').disabled = false;
     }
+    const dropZone = document.getElementById('dropZone'), fileInput = document.getElementById('fileInput');
+    if(dropZone) { dropZone.addEventListener('dragover', e=>e.preventDefault()); dropZone.addEventListener('drop', e=>{ e.preventDefault(); handleFiles(e.dataTransfer.files); }); }
+    if(fileInput) fileInput.addEventListener('change', e=>handleFiles(e.target.files));
 
     // ==================== UTILS ====================
     function openModal(id) { document.getElementById(id).classList.add('active'); }
@@ -511,20 +362,10 @@ Generado: ${new Date().toLocaleString('es-AR')}`;
     function toggleDark() { document.body.classList.toggle('dark-mode'); localStorage.setItem('darkModeTorneo', document.body.classList.contains('dark-mode') ? '1' : '0'); }
     if (localStorage.getItem('darkModeTorneo') === '1') document.body.classList.add('dark-mode');
     function updateClock() { document.getElementById('live-clock').innerText = new Date().toLocaleTimeString('es-AR'); }
-    setInterval(updateClock, 1000);
-    updateClock();
-
-    const dropZone = document.getElementById('dropZone');
-    const fileInput = document.getElementById('fileInput');
-    if (dropZone) { dropZone.addEventListener('dragover', e => e.preventDefault()); dropZone.addEventListener('drop', e => { e.preventDefault(); handleFiles(e.dataTransfer.files); }); }
-    if (fileInput) fileInput.addEventListener('change', e => handleFiles(e.target.files));
-
-    document.querySelectorAll('.modal').forEach(modal => {
-        modal.addEventListener('click', function(e) { if (e.target === this) closeModal(this.id); });
-    });
-
-    if (appData.autoShiftEnabled !== false) { let autoShift = getShiftByTime(); if (autoShift) appData.config.shift = autoShift; }
+    setInterval(updateClock,1000); updateClock();
+    if (appData.autoShiftEnabled !== false) { let auto = getShiftByTime(); if(auto) appData.config.shift = auto; }
     updateUI();
+    document.querySelectorAll('.modal').forEach(modal => { modal.addEventListener('click', function(e) { if (e.target === this) closeModal(this.id); }); });
 </script>
 </body>
 </html>
