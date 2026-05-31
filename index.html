@@ -53,32 +53,30 @@
             background: var(--card);
             display: flex;
             flex-direction: column;
-            padding: 14px 16px;
+            padding: 12px 14px;
             box-shadow: var(--shadow);
             transition: background 0.3s;
-            gap: 6px;                     /* Espacio uniforme y más compacto */
+            gap: 8px;
         }
 
-        /* Header más grande */
+        /* Header */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-shrink: 0;
-            gap: 6px;
-            margin-bottom: 2px;
+            gap: 4px;
         }
         .logo {
-            font-weight: 800;
-            font-size: 1.15rem;
+            font-weight: 700;
+            font-size: 1rem;
             color: var(--primary);
-            letter-spacing: -0.3px;
         }
         .clock {
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 600;
             background: var(--stat-bg);
-            padding: 3px 12px;
+            padding: 2px 10px;
             border-radius: 20px;
             border: 1px solid var(--border);
         }
@@ -86,9 +84,9 @@
             background: var(--stat-bg);
             border: 1px solid var(--border);
             border-radius: 50%;
-            width: 38px;
-            height: 38px;
-            font-size: 18px;
+            width: 32px;
+            height: 32px;
+            font-size: 16px;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -99,24 +97,22 @@
         }
         .icon-btn:active { transform: scale(0.9); }
 
-        /* Configuración en línea (anchos optimizados) */
+        /* Configuración en línea */
         .config-row {
             display: flex;
             gap: 6px;
             flex-shrink: 0;
         }
         .config-box, .controller-box {
+            flex: 1;
             background: var(--stat-bg);
             border: 1.5px solid var(--primary);
             border-radius: 14px;
-            padding: 5px 6px;
+            padding: 6px 8px;
             display: flex;
             flex-direction: column;
             gap: 2px;
         }
-        .config-box { flex: 1; }           /* Acceso y Turno */
-        .controller-box { flex: 1.2; }     /* Controlador un poco más ancho */
-
         .config-box label, .controller-box label {
             font-size: 9px;
             font-weight: 700;
@@ -142,24 +138,22 @@
             color: var(--subtext);
             font-weight: 500;
             flex-shrink: 0;
-            margin-top: -2px;
-            margin-bottom: -2px;
         }
 
         /* Botones de venta */
         .buttons-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            gap: 14px;
             flex-shrink: 0;
         }
         .entry-btn {
             border: none;
             border-radius: 20px;
-            padding: 16px 8px;
+            padding: 18px 10px;
             color: white;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 16px;
             cursor: pointer;
             box-shadow: var(--btn-shadow);
             transition: all 0.1s ease;
@@ -167,7 +161,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 4px;
+            gap: 6px;
             user-select: none;
             -webkit-tap-highlight-color: transparent;
         }
@@ -178,52 +172,50 @@
         .cash-btn { background: linear-gradient(135deg, #10b981, #059669); }
         .transfer-btn { background: linear-gradient(135deg, #3b82f6, #2563eb); }
         .price-tag {
-            font-size: 1.7rem;
+            font-size: 1.8rem;
             font-weight: 800;
             letter-spacing: 1px;
         }
 
-        /* Panel de totales (sin margen extra) */
+        /* Panel de totales */
         .stats-card {
             background: var(--stat-bg);
             border: 1px solid var(--border);
             border-radius: 14px;
-            padding: 8px 12px;
+            padding: 8px 10px;
             flex-shrink: 0;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4px 14px;
-            margin-bottom: 0;
+            gap: 6px 12px;
         }
         .stat-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 13px;
+            font-size: 14px;
             border-bottom: 1px solid var(--border);
-            padding: 3px 0;
+            padding: 4px 0;
         }
         .stat-row.total-row {
             border-bottom: none;
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 800;
             color: var(--success);
             grid-column: 1 / -1;
         }
         .stat-value { font-weight: 700; }
 
-        /* Barra de acciones (pegada, sin hueco) */
+        /* Barra de acciones */
         .action-bar {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             flex-shrink: 0;
             align-items: center;
-            margin-top: 4px;
         }
         .btn {
             border: none;
             border-radius: 12px;
-            padding: 11px 8px;
+            padding: 10px 12px;
             font-weight: 700;
             font-size: 13px;
             cursor: pointer;
@@ -234,7 +226,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 3px;
+            gap: 4px;
         }
         .btn-undo { background: var(--warning); }
         .btn-undo:disabled { opacity: 0.4; pointer-events: none; }
@@ -244,9 +236,9 @@
             color: white;
             border: none;
             border-radius: 12px;
-            padding: 11px 10px;
+            padding: 10px 12px;
             font-weight: 800;
-            font-size: 14px;
+            font-size: 13px;
             cursor: pointer;
             box-shadow: var(--btn-shadow);
             letter-spacing: 0.3px;
@@ -312,7 +304,7 @@
     <div class="header">
         <span class="logo">🎫 Torneo 27 Junio</span>
         <span class="clock" id="live-clock">--:--:--</span>
-        <div style="display:flex; gap:6px;">
+        <div style="display:flex; gap:4px;">
             <button class="icon-btn" onclick="toggleDark()">🌓</button>
             <button class="icon-btn" onclick="showHelp()">❓</button>
         </div>
@@ -327,7 +319,7 @@
                 <option value="Entrada 3">Entrada 3</option>
             </select>
         </div>
-        <div class="config-box" style="flex: 0.8;">
+        <div class="config-box">
             <label>🕒 Turno</label>
             <select id="shift-select" onchange="saveConfig()">
                 <option value="08:30 - 11:30 | USAG 2">08:30 - 11:30 | USAG 2</option>
@@ -379,7 +371,7 @@
     </div>
 </div>
 
-<!-- Modales (idénticos a la versión anterior) -->
+<!-- Modales -->
 <div class="modal" id="downloadModal">
     <div class="modal-content">
         <h3>🔒 Descargar Reporte</h3>
